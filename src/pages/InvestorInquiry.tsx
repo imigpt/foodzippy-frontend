@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Send, User, Mail, Phone, MapPin, Building2, ArrowLeft } from 'lucide-react';
+import { Send, User, Mail, Phone, MapPin, Building2, ArrowLeft, DollarSign, IndianRupee } from 'lucide-react';
 
 interface FormData {
   name: string;
@@ -9,6 +9,7 @@ interface FormData {
   city: string;
   state: string;
   companyName: string;
+  investorAmount: string;
 }
 
 function InvestorInquiry() {
@@ -20,6 +21,7 @@ function InvestorInquiry() {
     city: '',
     state: '',
     companyName: '',
+    investorAmount: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -68,6 +70,16 @@ function InvestorInquiry() {
 
     if (!formData.state.trim()) {
       newErrors.state = 'State is required';
+    }
+
+    // Investment amount (required, INR format)
+    if (!formData.investorAmount || !formData.investorAmount.trim()) {
+      newErrors.investorAmount = 'Investment amount is required';
+    } else {
+      const amt = formData.investorAmount.replace(/[^\d.]/g, '');
+      if (!/^\d+(\.\d{1,2})?$/.test(amt)) {
+        newErrors.investorAmount = 'Please enter a valid amount in INR';
+      }
     }
 
     setErrors(newErrors);
@@ -214,7 +226,7 @@ function InvestorInquiry() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Name Field */}
                 <div className="group">
-                  <label className="block text-sm font-medium text-gray-700 mb-2 font-montserrat">
+                  <label className="block text-sm font-medium text-[#FF263A] mb-2 font-montserrat">
                     Full Name <span className="text-red-500">*</span>
                   </label>
                   <div className="relative">
@@ -244,7 +256,7 @@ function InvestorInquiry() {
 
                 {/* Email Field */}
                 <div className="group">
-                  <label className="block text-sm font-medium text-gray-700 mb-2 font-montserrat">
+                  <label className="block text-sm font-medium text-[#FF263A] mb-2 font-montserrat">
                     Email Address <span className="text-red-500">*</span>
                   </label>
                   <div className="relative">
@@ -274,7 +286,7 @@ function InvestorInquiry() {
 
                 {/* Phone Field */}
                 <div className="group">
-                  <label className="block text-sm font-medium text-gray-700 mb-2 font-montserrat">
+                  <label className="block text-sm font-medium text-[#FF263A] mb-2 font-montserrat">
                     Phone Number <span className="text-red-500">*</span>
                   </label>
                   <div className="relative">
@@ -306,7 +318,7 @@ function InvestorInquiry() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {/* City Field */}
                   <div className="group">
-                    <label className="block text-sm font-medium text-gray-700 mb-2 font-montserrat">
+                    <label className="block text-sm font-medium text-[#FF263A] mb-2 font-montserrat">
                       City <span className="text-red-500">*</span>
                     </label>
                     <div className="relative">
@@ -336,7 +348,7 @@ function InvestorInquiry() {
 
                   {/* State Field */}
                   <div className="group">
-                    <label className="block text-sm font-medium text-gray-700 mb-2 font-montserrat">
+                    <label className="block text-sm font-medium text-[#FF263A] mb-2 font-montserrat">
                       State <span className="text-red-500">*</span>
                     </label>
                     <div className="relative">
@@ -367,7 +379,7 @@ function InvestorInquiry() {
 
                 {/* Company Name Field (Optional) */}
                 <div className="group">
-                  <label className="block text-sm font-medium text-gray-700 mb-2 font-montserrat">
+                  <label className="block text-sm font-medium text-[#FF263A] mb-2 font-montserrat">
                     Company Name <span className="text-gray-400 text-xs">(Optional)</span>
                   </label>
                   <div className="relative">
@@ -384,6 +396,32 @@ function InvestorInquiry() {
                       className="w-full pl-11 pr-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-0 transition-all duration-200 font-montserrat border-gray-200 focus:border-[#E82335]"
                     />
                   </div>
+                </div>
+
+                {/* Investor Amount Field (Required, INR) */}
+                <div className="group">
+                  <label className="block text-sm font-medium text-[#FF263A] mb-2 font-montserrat">
+                    Investment Amount <span className="text-red-500">*</span> <span className="text-gray-400 text-xs"></span>
+                  </label>
+                  <div className="relative">
+                    <IndianRupee
+                      size={18}
+                      className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-[#E82335] transition-colors"
+                    />
+                    <input
+                      type="text"
+                      name="investorAmount"
+                      value={formData.investorAmount}
+                      onChange={handleChange}
+                      placeholder="Intended investment amount (INR ₹)"
+                      className="w-full pl-11 pr-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-0 transition-all duration-200 font-montserrat border-gray-200 focus:border-[#E82335]"
+                    />
+                  </div>
+                  {errors.investorAmount && (
+                    <p className="text-red-500 text-sm mt-1 animate-shake">
+                      {errors.investorAmount}
+                    </p>
+                  )}
                 </div>
 
                 {/* Submit Button */}

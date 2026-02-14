@@ -91,17 +91,17 @@ function Navbar({ onOpenStoryPanel }: NavbarProps) {
               Investor
             </button>
 
-            <button
+            {/* <button
               className={`${textColor} hover:${textColor} font-montserrat hover:bg-white/20 px-5 py-2 rounded-full transition-all duration-200 font-medium flex items-center gap-2`}
             >
               <MapPin size={20} color={iconColor} />
               Choose your city
-            </button>
+            </button> */}
 
             <button
               className={`${textColor} hover:${textColor} font-montserrat hover:bg-white/20 px-5 py-2 rounded-full transition-all duration-200 font-medium`}
             >
-              Order Soon
+              Student Cashback
             </button>
           </div>
 
@@ -165,13 +165,13 @@ function Navbar({ onOpenStoryPanel }: NavbarProps) {
               Investor
             </button>
 
-            <button className="w-full px-3 py-2 text-white hover:bg-yellow-500 rounded-md font-medium flex items-center gap-2">
+            {/* <button className="w-full px-3 py-2 text-white hover:bg-yellow-500 rounded-md font-medium flex items-center gap-2">
               <MapPin size={20} color="white" />
               Choose your city
-            </button>
+            </button> */}
 
             <button className="w-full bg-white text-orange-500 px-6 py-2 rounded-full hover:bg-yellow-100 transition-colors font-medium active:bg-white focus:bg-white">
-              Order soon
+              Student Cashback
             </button>
           </div>
         </div>
