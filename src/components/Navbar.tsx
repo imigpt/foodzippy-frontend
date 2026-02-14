@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Menu, X, MapPin } from 'lucide-react';
 
 interface NavbarProps {
@@ -8,7 +8,6 @@ interface NavbarProps {
 
 function Navbar({ onOpenStoryPanel }: NavbarProps) {
   const navigate = useNavigate();
-  const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Background colors (RED first, YELLOW second)
@@ -85,12 +84,12 @@ function Navbar({ onOpenStoryPanel }: NavbarProps) {
               Franchises
             </button>
 
-            <a
-              href="#how-it-works"
+            <button
+              onClick={() => navigate('/investor-inquiry')}
               className={`${textColor} hover:${textColor} font-montserrat hover:bg-white/20 px-5 py-2 rounded-full transition-all duration-300 font-medium`}
             >
-              How It Works
-            </a>
+              Investor
+            </button>
 
             <button
               className={`${textColor} hover:${textColor} font-montserrat hover:bg-white/20 px-5 py-2 rounded-full transition-all duration-200 font-medium flex items-center gap-2`}
@@ -156,9 +155,15 @@ function Navbar({ onOpenStoryPanel }: NavbarProps) {
             >
               Franchises
             </button>
-            <a href="#how-it-works" className="block px-3 py-2 text-white hover:bg-yellow-500 rounded-md font-medium">
-              How It Works
-            </a>
+            <button
+              onClick={() => {
+                navigate('/investor-inquiry');
+                setIsMobileMenuOpen(false);
+              }}
+              className="block w-full text-left px-3 py-2 text-white hover:bg-yellow-500 rounded-md font-medium"
+            >
+              Investor
+            </button>
 
             <button className="w-full px-3 py-2 text-white hover:bg-yellow-500 rounded-md font-medium flex items-center gap-2">
               <MapPin size={20} color="white" />

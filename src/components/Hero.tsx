@@ -14,6 +14,7 @@ function Hero() {
 
   const [current, setCurrent] = useState(0);
   const [loaded, setLoaded] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(true);
 
   // Preload images
   useEffect(() => {
@@ -35,26 +36,42 @@ function Hero() {
   useEffect(() => {
     if (!loaded) return;
     const id = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % images.length);
+      setCurrent((prev) => prev + 1);
     }, 4000);
     return () => clearInterval(id);
   }, [loaded]);
+
+  // Handle transition end to create infinite loop
+  useEffect(() => {
+    if (current === images.length) {
+      // We've reached the duplicate first image
+      setTimeout(() => {
+        setIsTransitioning(false);
+        setCurrent(0);
+      }, 1000); // Wait for transition to complete
+      
+      setTimeout(() => {
+        setIsTransitioning(true);
+      }, 1050); // Re-enable transition after reset
+    }
+  }, [current, images.length]);
 
   return (
     <section className="relative w-full h-screen overflow-hidden text-white">
 
       {/* SLIDES */}
       <div
-        className="absolute inset-0 flex transition-transform duration-1000 ease-in-out"
+        className="absolute inset-0 flex ease-in-out"
         style={{
           transform: `translateX(-${current * 100}%)`,
+          transition: isTransitioning ? 'transform 1000ms ease-in-out' : 'none',
           willChange: "transform",
           contain: "layout",
         }}
       >
         {images.map((src, i) => (
           <img
-            key={src}
+            key={`img-${i}`}
             src={src}
             loading={i === 0 ? "eager" : "lazy"}
             decoding="async"
@@ -62,6 +79,15 @@ function Hero() {
             draggable="false"
           />
         ))}
+        {/* Duplicate first image at the end for seamless loop */}
+        <img
+          key="img-duplicate"
+          src={images[0]}
+          loading="lazy"
+          decoding="async"
+          className="w-full h-full object-cover flex-shrink-0"
+          draggable="false"
+        />
       </div>
 
       {/* OVERLAY */}

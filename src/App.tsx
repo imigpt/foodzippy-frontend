@@ -13,6 +13,7 @@ import HowItWorks from './components/HowItWorks';
 import FranchiseRegistration from './pages/FranchiseRegistration';
 import ServiceRegistration from './pages/ServiceRegistration';
 import FranchiseInquiry from './pages/FranchiseInquiry';
+import InvestorInquiry from './pages/InvestorInquiry';
 // Agent Pages
 import AgentDashboard from './pages/agent/AgentDashboard';
 import AgentAttendance from './pages/agent/AgentAttendance';
@@ -63,6 +64,7 @@ function App() {
         <Route path="/vendor-registration" element={<FranchiseRegistration />} />
         <Route path="/service-registration" element={<ServiceRegistration />} />
         <Route path="/franchise-inquiry" element={<FranchiseInquiry />} />
+        <Route path="/investor-inquiry" element={<InvestorInquiry />} />
         
         {/* Agent Routes */}
         <Route path="/agent/dashboard" element={<AgentDashboard />} />
