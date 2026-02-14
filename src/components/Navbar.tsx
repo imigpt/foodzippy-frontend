@@ -4,10 +4,9 @@ import { Menu, X, MapPin } from 'lucide-react';
 
 interface NavbarProps {
   onOpenStoryPanel: () => void;
-  onOpenFranchiseForm?: () => void;
 }
 
-function Navbar({ onOpenStoryPanel, onOpenFranchiseForm }: NavbarProps) {
+function Navbar({ onOpenStoryPanel }: NavbarProps) {
   const navigate = useNavigate();
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -80,7 +79,7 @@ function Navbar({ onOpenStoryPanel, onOpenFranchiseForm }: NavbarProps) {
               Restaurants
             </a>
             <button
-              onClick={onOpenFranchiseForm}
+              onClick={() => navigate('/franchise-inquiry')}
               className={`${textColor} hover:${textColor} font-montserrat hover:bg-white/20 px-5 py-2 rounded-full transition-all duration-300 font-medium`}
             >
               Franchises
@@ -148,9 +147,9 @@ function Navbar({ onOpenStoryPanel, onOpenFranchiseForm }: NavbarProps) {
               Restaurants
             </a>
 
-              <button
+            <button
               onClick={() => {
-                onOpenFranchiseForm?.();
+                navigate('/franchise-inquiry');
                 setIsMobileMenuOpen(false);
               }}
               className="block w-full text-left px-3 py-2 text-white hover:bg-yellow-500 rounded-md font-medium"

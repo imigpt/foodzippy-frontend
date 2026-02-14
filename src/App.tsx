@@ -10,9 +10,9 @@ import Footer from './components/Footer';
 import OurStoryPanel from './components/OurStoryPanel';
 import WhatWeOffer from './components/WhatWeOffer';
 import HowItWorks from './components/HowItWorks';
-import FranchiseFormModal from './components/FranchiseFormModal';
 import FranchiseRegistration from './pages/FranchiseRegistration';
 import ServiceRegistration from './pages/ServiceRegistration';
+import FranchiseInquiry from './pages/FranchiseInquiry';
 // Agent Pages
 import AgentDashboard from './pages/agent/AgentDashboard';
 import AgentAttendance from './pages/agent/AgentAttendance';
@@ -28,21 +28,19 @@ import EmployeeDashboard from './pages/agent/EmployeeDashboard';
 
 function HomePage() {
   const [isStoryPanelOpen, setIsStoryPanelOpen] = useState(false);
-  const [isFranchiseFormOpen, setIsFranchiseFormOpen] = useState(false);
 
   useEffect(() => {
-    if (isStoryPanelOpen || isFranchiseFormOpen) {
+    if (isStoryPanelOpen) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'unset';
     }
-  }, [isStoryPanelOpen, isFranchiseFormOpen]);
+  }, [isStoryPanelOpen]);
 
   return (
     <div className="min-h-screen bg-white">
       <Navbar 
         onOpenStoryPanel={() => setIsStoryPanelOpen(true)} 
-        onOpenFranchiseForm={() => setIsFranchiseFormOpen(true)} 
       />
       <Hero />
       <WhatWeOffer />
@@ -53,7 +51,6 @@ function HomePage() {
       <PartnershipSection />
       <Footer />
       <OurStoryPanel isOpen={isStoryPanelOpen} onClose={() => setIsStoryPanelOpen(false)} />
-      <FranchiseFormModal isOpen={isFranchiseFormOpen} onClose={() => setIsFranchiseFormOpen(false)} />
     </div>
   );
 }
@@ -65,6 +62,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/vendor-registration" element={<FranchiseRegistration />} />
         <Route path="/service-registration" element={<ServiceRegistration />} />
+        <Route path="/franchise-inquiry" element={<FranchiseInquiry />} />
         
         {/* Agent Routes */}
         <Route path="/agent/dashboard" element={<AgentDashboard />} />
