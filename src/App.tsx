@@ -1,0 +1,94 @@
+import { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import RestaurantsSection from './components/RestaurantsSection';
+import StatsSection from './components/StatsSection';
+import TestimonialsSection from './components/TestimonialsSection';
+import PartnershipSection from './components/PartnershipSection';
+import Footer from './components/Footer';
+import OurStoryPanel from './components/OurStoryPanel';
+import WhatWeOffer from './components/WhatWeOffer';
+import HowItWorks from './components/HowItWorks';
+import FranchiseFormModal from './components/FranchiseFormModal';
+import FranchiseRegistration from './pages/FranchiseRegistration';
+import ServiceRegistration from './pages/ServiceRegistration';
+// Agent Pages
+import AgentDashboard from './pages/agent/AgentDashboard';
+import AgentAttendance from './pages/agent/AgentAttendance';
+import VendorTypeSelection from './pages/agent/VendorTypeSelection';
+import DynamicVendorForm from './pages/agent/DynamicVendorForm';
+import VendorEditForm from './pages/agent/VendorEditForm';
+import AgentRequests from './pages/agent/AgentRequests';
+import AgentProfile from './pages/agent/AgentProfile';
+import AgentEarnings from './pages/agent/AgentEarnings';
+import AgentFollowUps from './pages/agent/AgentFollowUps';
+// Employee Pages (use same components with different routes)
+import EmployeeDashboard from './pages/agent/EmployeeDashboard';
+
+function HomePage() {
+  const [isStoryPanelOpen, setIsStoryPanelOpen] = useState(false);
+  const [isFranchiseFormOpen, setIsFranchiseFormOpen] = useState(false);
+
+  useEffect(() => {
+    if (isStoryPanelOpen || isFranchiseFormOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [isStoryPanelOpen, isFranchiseFormOpen]);
+
+  return (
+    <div className="min-h-screen bg-white">
+      <Navbar 
+        onOpenStoryPanel={() => setIsStoryPanelOpen(true)} 
+        onOpenFranchiseForm={() => setIsFranchiseFormOpen(true)} 
+      />
+      <Hero />
+      <WhatWeOffer />
+      <HowItWorks />
+      <RestaurantsSection />
+      <StatsSection />
+      <TestimonialsSection />
+      <PartnershipSection />
+      <Footer />
+      <OurStoryPanel isOpen={isStoryPanelOpen} onClose={() => setIsStoryPanelOpen(false)} />
+      <FranchiseFormModal isOpen={isFranchiseFormOpen} onClose={() => setIsFranchiseFormOpen(false)} />
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/vendor-registration" element={<FranchiseRegistration />} />
+        <Route path="/service-registration" element={<ServiceRegistration />} />
+        
+        {/* Agent Routes */}
+        <Route path="/agent/dashboard" element={<AgentDashboard />} />
+        <Route path="/agent/vendor-type" element={<VendorTypeSelection />} />
+        <Route path="/agent/vendor-form" element={<DynamicVendorForm />} />
+        <Route path="/agent/vendor/:id/edit" element={<VendorEditForm />} />
+        <Route path="/agent/requests" element={<AgentRequests />} />
+        <Route path="/agent/profile" element={<AgentProfile />} />
+        <Route path="/agent/earnings" element={<AgentEarnings role="agent" />} />
+        <Route path="/agent/follow-ups" element={<AgentFollowUps role="agent" />} />
+        
+        {/* Employee Routes */}
+        <Route path="/employee/dashboard" element={<EmployeeDashboard />} />
+        <Route path="/employee/attendance" element={<AgentAttendance />} />
+        <Route path="/employee/vendor-type" element={<VendorTypeSelection />} />
+        <Route path="/employee/vendor-form" element={<DynamicVendorForm />} />
+        <Route path="/employee/vendor/:id/edit" element={<VendorEditForm />} />
+        <Route path="/employee/requests" element={<AgentRequests />} />
+        <Route path="/employee/profile" element={<AgentProfile />} />
+        <Route path="/employee/earnings" element={<AgentEarnings role="employee" />} />
+        <Route path="/employee/follow-ups" element={<AgentFollowUps role="employee" />} />
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;
