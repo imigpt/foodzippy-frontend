@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Send, User, Mail, Phone, MapPin, Building2, ArrowLeft, DollarSign, IndianRupee } from 'lucide-react';
+import { Send, User, Mail, Phone, MapPin, Building2, ArrowLeft, IndianRupee } from 'lucide-react';
 
 interface FormData {
   name: string;
@@ -139,12 +139,29 @@ function InvestorInquiry() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-red-50">
-      {/* Navbar - Same as Home Page */}
-      <nav
-        className="sticky top-0 z-50 transition-colors duration-500"
-        style={{ backgroundColor: colors[bgIndex] }}
+    <div className="min-h-screen relative">
+      {/* Background Image with Overlay */}
+      <div 
+        className="fixed inset-0 z-0"
+        style={{
+          backgroundImage: 'url(/investor.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          backgroundAttachment: 'fixed',
+        }}
       >
+        {/* Semi-transparent overlay for readability (reduced opacity) */}
+        <div className="absolute inset-0 bg-gradient-to-br from-orange-50/40 via-white/10 to-red-50/40"></div>
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10">
+        {/* Navbar - Same as Home Page */}
+        <nav
+          className="sticky top-0 z-50 transition-colors duration-500"
+          style={{ backgroundColor: colors[bgIndex] }}
+        >
         <div className="max-w-8xl mx-auto px-6 sm:px-7 lg:px-9">
           <div className="flex justify-between items-center h-24 py-2">
             {/* LOGO */}
@@ -179,17 +196,19 @@ function InvestorInquiry() {
 
       {/* Page Title Section */}
       <div className="max-w-4xl mx-auto px-4 pt-8 pb-4">
-        <h1 className="text-3xl md:text-4xl font-bold text-gray-800 font-montserrat">
-          Investor Inquiry
-        </h1>
-        <p className="text-gray-600 mt-2 font-montserrat">
-          Interested in investing with Foodzippy? Fill out the form below and our team will get in touch with you.
-        </p>
+        <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-800 font-montserrat">
+            Investor Inquiry
+          </h1>
+          <p className="text-gray-600 mt-2 font-montserrat">
+            Interested in investing with Foodzippy? Fill out the form below and our team will get in touch with you.
+          </p>
+        </div>
       </div>
 
       {/* Form Container */}
       <div className="max-w-2xl mx-auto px-4 py-6">
-        <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
+        <div className="bg-white/95 backdrop-blur-md rounded-3xl shadow-2xl overflow-hidden border border-gray-100">
           {/* Decorative Top */}
           <div className="h-2 bg-gradient-to-r from-[#E82335] to-[#F7C150]" />
 
@@ -226,7 +245,7 @@ function InvestorInquiry() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Name Field */}
                 <div className="group">
-                  <label className="block text-sm font-medium text-[#FF263A] mb-2 font-montserrat">
+                  <label className="block text-sm font-medium text-[#E82335] mb-2 font-montserrat">
                     Full Name <span className="text-red-500">*</span>
                   </label>
                   <div className="relative">
@@ -256,7 +275,7 @@ function InvestorInquiry() {
 
                 {/* Email Field */}
                 <div className="group">
-                  <label className="block text-sm font-medium text-[#FF263A] mb-2 font-montserrat">
+                  <label className="block text-sm font-medium text-[#E82335] mb-2 font-montserrat">
                     Email Address <span className="text-red-500">*</span>
                   </label>
                   <div className="relative">
@@ -286,7 +305,7 @@ function InvestorInquiry() {
 
                 {/* Phone Field */}
                 <div className="group">
-                  <label className="block text-sm font-medium text-[#FF263A] mb-2 font-montserrat">
+                  <label className="block text-sm font-medium text-[#E82335] mb-2 font-montserrat">
                     Phone Number <span className="text-red-500">*</span>
                   </label>
                   <div className="relative">
@@ -318,7 +337,7 @@ function InvestorInquiry() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {/* City Field */}
                   <div className="group">
-                    <label className="block text-sm font-medium text-[#FF263A] mb-2 font-montserrat">
+                    <label className="block text-sm font-medium text-[#E82335] mb-2 font-montserrat">
                       City <span className="text-red-500">*</span>
                     </label>
                     <div className="relative">
@@ -348,7 +367,7 @@ function InvestorInquiry() {
 
                   {/* State Field */}
                   <div className="group">
-                    <label className="block text-sm font-medium text-[#FF263A] mb-2 font-montserrat">
+                    <label className="block text-sm font-medium text-[#E82335] mb-2 font-montserrat">
                       State <span className="text-red-500">*</span>
                     </label>
                     <div className="relative">
@@ -379,7 +398,7 @@ function InvestorInquiry() {
 
                 {/* Company Name Field (Optional) */}
                 <div className="group">
-                  <label className="block text-sm font-medium text-[#FF263A] mb-2 font-montserrat">
+                  <label className="block text-sm font-medium text-[#E82335] mb-2 font-montserrat">
                     Company Name <span className="text-gray-400 text-xs">(Optional)</span>
                   </label>
                   <div className="relative">
@@ -400,7 +419,7 @@ function InvestorInquiry() {
 
                 {/* Investor Amount Field (Required, INR) */}
                 <div className="group">
-                  <label className="block text-sm font-medium text-[#FF263A] mb-2 font-montserrat">
+                  <label className="block text-sm font-medium text-[#E82335] mb-2 font-montserrat">
                     Investment Amount <span className="text-red-500">*</span> <span className="text-gray-400 text-xs"></span>
                   </label>
                   <div className="relative">
@@ -467,7 +486,7 @@ function InvestorInquiry() {
         </div>
 
         {/* Info Box */}
-        <div className="mt-8 bg-white rounded-2xl shadow-lg p-6">
+        <div className="mt-8 bg-white/95 backdrop-blur-md rounded-2xl shadow-lg p-6 border border-gray-100">
           <h3 className="text-lg font-bold text-gray-800 font-montserrat mb-3">
             Why Invest with Foodzippy?
           </h3>
@@ -518,6 +537,7 @@ function InvestorInquiry() {
           animation: shake 0.3s ease-in-out;
         }
       `}</style>
+      </div>
     </div>
   );
 }

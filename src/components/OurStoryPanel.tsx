@@ -54,10 +54,14 @@ function OurStoryPanel({ isOpen, onClose }: OurStoryPanelProps) {
                 <span className="text-2xl">🎓</span>
               </div>
               <h3 className="text-xl font-bold font-century-gothic text-gray-900 mb-3">
-                Built for Students
+                Built for Everyone Who Loves Good Food
               </h3>
               <p className="text-gray-600 font-century-gothic leading-relaxed">
-               Every student in UP has lived the same moment—hungry at night, tired from studying, and frustrated because good food feels out of reach. Foodzippy didn’t come from a boardroom; it came from that exact pain. We’re a homegrown Indian startup built by students who were done choosing between overpriced meals and empty stomachs. While big platforms charge restaurants heavy commissions, we chose a different path: the lowest commission today, and a future where students pay zero commission on food. Foodzippy exists to support your hustle, your dreams, and your long nights—because no student should struggle for a simple meal.
+              Great food shouldn’t depend on your schedule, budget, or location. Whether you’re studying late, working overtime, managing a busy household, or simply craving something delicious, Foodzippy is here to make ordering food easy, affordable, and reliable.
+              <br></br>
+              Foodzippy wasn’t created in a boardroom - it was born from real everyday experiences of people who struggled to find quality food at fair prices. We saw a system where customers paid more while local restaurants earned less. So we chose a different path: fair pricing, minimal commissions, and a platform built to support both customers and food partners.
+              <br></br>
+              Our goal is simple - make good food accessible to everyone, anytime, anywhere. Because no one should have to compromise between quality, convenience, and affordability.
               </p>
             </div>
 
@@ -66,10 +70,12 @@ function OurStoryPanel({ isOpen, onClose }: OurStoryPanelProps) {
                 <span className="text-2xl">🇮🇳</span>
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">
-                Proud Indian Startup from UP
+                Proud Indian Startup from Uttar Pradesh
               </h3>
               <p className="text-gray-600 font-century-gothic leading-relaxed">
-                Born in the heart of Uttar Pradesh, we represent India’s entrepreneurial spirit by empowering local restaurants and supporting student communities. Our mission is to make good food more accessible, affordable, and reliable while helping small food businesses grow and thrive in every campus and city.
+              Born in the heart of Uttar Pradesh, Foodzippy represents India’s entrepreneurial spirit and the power of local communities. We are committed to empowering neighborhood restaurants, cloud kitchens, and home chefs while serving people across campuses, offices, homes, and cities.
+              <br></br>
+              Our mission is to make food delivery more accessible, affordable, and dependable while helping small food businesses grow and thrive across India.
               </p>
             </div>
 
@@ -81,7 +87,9 @@ function OurStoryPanel({ isOpen, onClose }: OurStoryPanelProps) {
                 Lowest Commission Promise
               </h3>
               <p className="text-gray-600 font-century-gothic leading-relaxed">
-                We charge the lowest commission in the industry so restaurants can offer better prices and students can enjoy more affordable meals.
+              Unlike traditional food delivery platforms that charge heavy commissions, Foodzippy operates on one of the lowest commission models in the industry. This allows restaurants to offer better prices while customers enjoy more value for their money.
+              <br></br>
+              We believe in a fair ecosystem where businesses succeed and customers benefit - creating a win-win experience for everyone.
               </p>
             </div>
 

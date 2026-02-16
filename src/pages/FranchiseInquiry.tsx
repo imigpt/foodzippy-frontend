@@ -119,11 +119,28 @@ function FranchiseInquiry() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-red-50">
-      {/* Navbar - Same as Home Page */}
-      <nav
-        className="sticky top-0 z-50 transition-colors duration-500"
-        style={{ backgroundColor: colors[bgIndex] }}
+    <div className="min-h-screen relative">
+      {/* Background Image with Overlay */}
+      <div 
+        className="fixed inset-0 z-0"
+        style={{
+          backgroundImage: 'url(/franchise.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          backgroundAttachment: 'fixed',
+        }}
+      >
+        {/* Semi-transparent overlay for better readability (reduced opacity, no blur) */}
+        <div className="absolute inset-0 bg-gradient-to-br from-orange-50/40 via-white/10 to-red-50/40"></div>
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10">
+        {/* Navbar - Same as Home Page */}
+        <nav
+          className="sticky top-0 z-50 transition-colors duration-500"
+          style={{ backgroundColor: colors[bgIndex] }}
       >
         <div className="max-w-8xl mx-auto px-6 sm:px-7 lg:px-9">
           <div className="flex justify-between items-center h-24 py-2">
@@ -159,17 +176,19 @@ function FranchiseInquiry() {
 
       {/* Page Title Section */}
       <div className="max-w-4xl mx-auto px-4 pt-8 pb-4">
-        <h1 className="text-3xl md:text-4xl font-bold text-gray-800 font-montserrat">
-          Franchise Inquiry
-        </h1>
-        <p className="text-gray-600 mt-2 font-montserrat">
-          Join the Foodzippy family! Fill out the form below and we'll get back to you soon.
-        </p>
+        <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-800 font-montserrat">
+            Franchise Inquiry
+          </h1>
+          <p className="text-gray-600 mt-2 font-montserrat">
+            Join the Foodzippy family! Fill out the form below and we'll get back to you soon.
+          </p>
+        </div>
       </div>
 
       {/* Form Container */}
       <div className="max-w-2xl mx-auto px-4 py-12">
-        <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
+        <div className="bg-white/95 backdrop-blur-md rounded-3xl shadow-2xl overflow-hidden border border-gray-100">
           {/* Decorative Top */}
           <div className="h-2 bg-gradient-to-r from-[#E82335] to-[#F7C150]" />
 
@@ -206,7 +225,7 @@ function FranchiseInquiry() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Name Field */}
                 <div className="group">
-                  <label className="block text-sm font-medium text-gray-700 mb-2 font-montserrat">
+                  <label className="block text-sm font-medium text-[#E82335] mb-2 font-montserrat">
                     Full Name <span className="text-red-500">*</span>
                   </label>
                   <div className="relative">
@@ -236,7 +255,7 @@ function FranchiseInquiry() {
 
                 {/* Email Field */}
                 <div className="group">
-                  <label className="block text-sm font-medium text-gray-700 mb-2 font-montserrat">
+                  <label className="block text-sm font-medium text-[#E82335] mb-2 font-montserrat">
                     Email Address <span className="text-red-500">*</span>
                   </label>
                   <div className="relative">
@@ -266,7 +285,7 @@ function FranchiseInquiry() {
 
                 {/* Phone Field */}
                 <div className="group">
-                  <label className="block text-sm font-medium text-gray-700 mb-2 font-montserrat">
+                  <label className="block text-sm font-medium text-[#E82335] mb-2 font-montserrat">
                     Phone Number <span className="text-red-500">*</span>
                   </label>
                   <div className="relative">
@@ -296,7 +315,7 @@ function FranchiseInquiry() {
 
                 {/* Description Field */}
                 <div className="group">
-                  <label className="block text-sm font-medium text-gray-700 mb-2 font-montserrat">
+                  <label className="block text-sm font-medium text-[#E82335] mb-2 font-montserrat">
                     Description <span className="text-red-500">*</span>
                   </label>
                   <div className="relative">
@@ -367,7 +386,7 @@ function FranchiseInquiry() {
         </div>
 
         {/* Info Box */}
-        <div className="mt-8 bg-white rounded-2xl shadow-lg p-6">
+        <div className="mt-8 bg-white/95 backdrop-blur-md rounded-2xl shadow-lg p-6 border border-gray-100">
           <h3 className="text-lg font-bold text-gray-800 font-montserrat mb-3">
             Why Partner with Foodzippy?
           </h3>
@@ -418,6 +437,7 @@ function FranchiseInquiry() {
           animation: shake 0.3s ease-in-out;
         }
       `}</style>
+      </div>
     </div>
   );
 }
