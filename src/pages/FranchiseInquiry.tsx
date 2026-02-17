@@ -39,6 +39,16 @@ function FranchiseInquiry() {
   // Pick the correct logo based on background color
   const logoSrc = bgIndex === 1 ? "/foodzip2.png" : "/foodzip1.png";
 
+  // Background image selection: try `untitled-1.jpg` first, fall back to `franchise.jpg`
+  const [bgSrc, setBgSrc] = useState('/franchise.png');
+
+  useEffect(() => {
+    const img = new Image();
+    img.src = '/franchise.jpg';
+    img.onload = () => setBgSrc('/franchise.png');
+    img.onerror = () => setBgSrc('/franchise.png');
+  }, []);
+
   const validateForm = (): boolean => {
     const newErrors: Partial<FormData> = {};
 
@@ -124,7 +134,7 @@ function FranchiseInquiry() {
       <div 
         className="fixed inset-0 z-0"
         style={{
-          backgroundImage: 'url(/franchise.jpg)',
+          backgroundImage: `url(${bgSrc})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',

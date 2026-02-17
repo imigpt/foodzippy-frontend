@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import RestaurantsSection from './components/RestaurantsSection';
 import StatsSection from './components/StatsSection';
+import CitiesWeServe from './components/CitiesWeServe';
 import TestimonialsSection from './components/TestimonialsSection';
 import PartnershipSection from './components/PartnershipSection';
 import Footer from './components/Footer';
@@ -14,6 +15,7 @@ import FranchiseRegistration from './pages/FranchiseRegistration';
 import ServiceRegistration from './pages/ServiceRegistration';
 import FranchiseInquiry from './pages/FranchiseInquiry';
 import InvestorInquiry from './pages/InvestorInquiry';
+import StudentCashback from './pages/StudentCashback';
 // Agent Pages
 import AgentDashboard from './pages/agent/AgentDashboard';
 import AgentAttendance from './pages/agent/AgentAttendance';
@@ -48,6 +50,7 @@ function HomePage() {
       <HowItWorks />
       <RestaurantsSection />
       <StatsSection />
+      <CitiesWeServe />
       <TestimonialsSection />
       <PartnershipSection />
       <Footer />
@@ -65,6 +68,7 @@ function App() {
         <Route path="/service-registration" element={<ServiceRegistration />} />
         <Route path="/franchise-inquiry" element={<FranchiseInquiry />} />
         <Route path="/investor-inquiry" element={<InvestorInquiry />} />
+        <Route path="/student-cashback" element={<StudentCashback />} />
         
         {/* Agent Routes */}
         <Route path="/agent/dashboard" element={<AgentDashboard />} />

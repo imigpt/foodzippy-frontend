@@ -144,7 +144,7 @@ function InvestorInquiry() {
       <div 
         className="fixed inset-0 z-0"
         style={{
-          backgroundImage: 'url(/investor.jpg)',
+          backgroundImage: 'url(/investor.png)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',

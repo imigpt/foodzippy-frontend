@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Menu, X, MapPin } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 interface NavbarProps {
   onOpenStoryPanel: () => void;
@@ -9,30 +9,28 @@ interface NavbarProps {
 function Navbar({ onOpenStoryPanel }: NavbarProps) {
   const navigate = useNavigate();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
-  // Background colors (RED first, YELLOW second)
-  const colors = ['#E82335', '#F7C150'];
-  const [bgIndex, setBgIndex] = useState(0);
-
-  // AUTO CHANGE BG
+  // Scroll detection: yellow at top, red when scrolled
   useEffect(() => {
-    const timer = setInterval(() => {
-      setBgIndex((i) => (i + 1) % colors.length);
-    }, 3000);
-    return () => clearInterval(timer);
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // AUTO TEXT COLOR (RED BG → WHITE TEXT, YELLOW BG → BLACK TEXT)
-  const textColor = bgIndex === 0 ? "text-white" : "text-black";
-  const iconColor = bgIndex === 0 ? "white" : "black";
-
-  // Pick the correct logo based on background color
-  const logoSrc = bgIndex === 1 ? "/foodzip2.png" : "/foodzip1.png";
+  // Yellow (#F7C150) at top, Red (#E82335) when scrolled
+  const bgColor = isScrolled ? '#E82335' : '#F7C150';
+  const textColor = isScrolled ? "text-white" : "text-black";
+  const iconColor = isScrolled ? "white" : "black";
+  const logoSrc = isScrolled ? "/foodzip1.png" : "/foodzip2.png";
 
   return (
     <nav
       className="sticky top-0 z-50 transition-colors duration-500"
-      style={{ backgroundColor: colors[bgIndex] }}
+      style={{ backgroundColor: bgColor }}
     >
       <div className="max-w-8xl mx-auto px-6 sm:px-7 lg:px-9">
         <div className="flex justify-between items-center h-24 py-2">
@@ -99,6 +97,7 @@ function Navbar({ onOpenStoryPanel }: NavbarProps) {
             </button> */}
 
             <button
+              onClick={() => navigate('/student-cashback')}
               className={`${textColor} hover:${textColor} font-montserrat hover:bg-white/20 px-5 py-2 rounded-full transition-all duration-200 font-medium`}
             >
               Student Cashback
@@ -170,7 +169,13 @@ function Navbar({ onOpenStoryPanel }: NavbarProps) {
               Choose your city
             </button> */}
 
-            <button className="w-full bg-white text-orange-500 px-6 py-2 rounded-full hover:bg-yellow-100 transition-colors font-medium active:bg-white focus:bg-white">
+            <button
+              onClick={() => {
+                navigate('/student-cashback');
+                setIsMobileMenuOpen(false);
+              }}
+              className="w-full bg-white text-orange-500 px-6 py-2 rounded-full hover:bg-yellow-100 transition-colors font-medium active:bg-white focus:bg-white"
+            >
               Student Cashback
             </button>
           </div>

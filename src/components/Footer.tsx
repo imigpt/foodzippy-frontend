@@ -56,13 +56,13 @@ function Footer() {
             </p>
 
             {/* UPDATED SOCIAL ICONS */}
-            <div className="flex gap-4">
+            {/* <div className="flex gap-4">
               <a
                 href="#"
                 className="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center hover:bg-yellow-600 transition-colors duration-200"
                 aria-label="Facebook"
               >
-                <Facebook size={20} className="text-white" />
+                <Facebook size={20} className="text-black" />
               </a>
 
               <a
@@ -70,7 +70,7 @@ function Footer() {
                 className="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center hover:bg-yellow-600 transition-colors duration-200"
                 aria-label="Instagram"
               >
-                <Instagram size={20} className="text-white" />
+                <Instagram size={20} className="text-black" />
               </a>
 
               <a
@@ -78,9 +78,9 @@ function Footer() {
                 className="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center hover:bg-yellow-600 transition-colors duration-200"
                 aria-label="X (Twitter)"
               >
-                <XIcon size={20} className="text-white" />
+                <XIcon size={20} className="text-black" />
               </a>
-            </div>
+            </div> */}
           </div>
 
           {/* Company Links */}
@@ -128,6 +128,32 @@ function Footer() {
               <button className="bg-yellow-500 p-2 rounded-full hover:bg-yellow-600 transition-colors">
                 <Mail size={20} />
               </button>
+            </div>
+            {/* Social icons under subscribe */}
+            <div className="mt-4 flex items-center gap-3">
+              <a
+                href="#"
+                className="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center hover:bg-yellow-600 transition-colors duration-200"
+                aria-label="Facebook"
+              >
+                <Facebook size={18} className="text-black" />
+              </a>
+
+              <a
+                href="#"
+                className="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center hover:bg-yellow-600 transition-colors duration-200"
+                aria-label="Instagram"
+              >
+                <Instagram size={18} className="text-black" />
+              </a>
+
+              <a
+                href="#"
+                className="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center hover:bg-yellow-600 transition-colors duration-200"
+                aria-label="X (Twitter)"
+              >
+                <XIcon size={18} className="text-black" />
+              </a>
             </div>
           </div>
 

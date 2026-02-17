@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Users, Briefcase } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { Users, Briefcase, Store } from 'lucide-react';
 
 interface Section7Data {
   role?: 'agent' | 'employee';
@@ -15,6 +16,7 @@ interface Section7Props {
 }
 
 function Section7({ data, onUpdate, errors = {}, onAgentLogin, isAgentAuthenticated, agentLoginError }: Section7Props) {
+  const navigate = useNavigate();
   const [selectedRole, setSelectedRole] = useState<'agent' | 'employee'>(data.role || 'agent');
   const [showLoginForm, setShowLoginForm] = useState(false);
   const [username, setUsername] = useState('');
@@ -24,6 +26,11 @@ function Section7({ data, onUpdate, errors = {}, onAgentLogin, isAgentAuthentica
   const handleRoleSelect = (role: 'agent' | 'employee') => {
     setSelectedRole(role);
     onUpdate({ ...data, role });
+  };
+
+  const handleVendorClick = () => {
+    // Redirect to franchise inquiry page for vendor registration
+    navigate('/franchise-inquiry');
   };
 
   const handleLoginClick = () => {
@@ -63,7 +70,7 @@ function Section7({ data, onUpdate, errors = {}, onAgentLogin, isAgentAuthentica
         <label className="block text-lg font-semibold text-slate-900 mb-3">
           Select Role <span className="text-red-500">*</span>
         </label>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {/* Agent Card */}
           <button
             type="button"
@@ -126,6 +133,31 @@ function Section7({ data, onUpdate, errors = {}, onAgentLogin, isAgentAuthentica
                 </span>
               </div>
             )}
+          </button>
+
+          {/* Vendor Card */}
+          <button
+            type="button"
+            onClick={handleVendorClick}
+            className="p-6 border-2 rounded-xl transition-all border-slate-300 bg-white hover:border-purple-400 hover:bg-purple-50 cursor-pointer hover:shadow-lg"
+          >
+            <div className="flex items-center gap-4">
+              <div className="p-3 rounded-full bg-slate-100 group-hover:bg-purple-100 transition-colors">
+                <Store className="w-8 h-8 text-slate-600" />
+              </div>
+              <div className="text-left">
+                <h3 className="text-xl font-bold text-slate-900">Vendor</h3>
+                <p className="text-sm text-slate-600">Register your business</p>
+              </div>
+            </div>
+            <div className="mt-3 flex items-center justify-center">
+              <span className="inline-flex items-center gap-2 text-purple-600 font-semibold text-sm">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+                DO IT YOURSELF
+              </span>
+            </div>
           </button>
         </div>
       </div>
