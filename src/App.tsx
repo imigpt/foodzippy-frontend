@@ -90,6 +90,9 @@ function App() {
         <Route path="/employee/profile" element={<AgentProfile />} />
         <Route path="/employee/earnings" element={<AgentEarnings role="employee" />} />
         <Route path="/employee/follow-ups" element={<AgentFollowUps role="employee" />} />
+        
+        {/* Vendor Routes */}
+        <Route path="/vendor/vendor-form" element={<DynamicVendorForm />} />
       </Routes>
     </Router>
   );

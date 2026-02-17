@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Users, Briefcase, Store } from 'lucide-react';
 
 interface Section7Data {
-  role?: 'agent' | 'employee';
+  role?: 'agent' | 'employee' | 'vendor';
 }
 
 interface Section7Props {
@@ -17,20 +17,44 @@ interface Section7Props {
 
 function Section7({ data, onUpdate, errors = {}, onAgentLogin, isAgentAuthenticated, agentLoginError }: Section7Props) {
   const navigate = useNavigate();
-  const [selectedRole, setSelectedRole] = useState<'agent' | 'employee'>(data.role || 'agent');
+  const [selectedRole, setSelectedRole] = useState<'agent' | 'employee' | 'vendor'>(data.role || 'agent');
   const [showLoginForm, setShowLoginForm] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isLoggingIn, setIsLoggingIn] = useState(false);
+  const [isVendorAuthenticated, setIsVendorAuthenticated] = useState(false);
+  const [vendorLoginError, setVendorLoginError] = useState('');
+  const [showVendorLoginForm, setShowVendorLoginForm] = useState(false);
+  const [vendorUsername, setVendorUsername] = useState('vendor123');
+  const [vendorPassword, setVendorPassword] = useState('vendor123');
 
-  const handleRoleSelect = (role: 'agent' | 'employee') => {
+  const handleRoleSelect = (role: 'agent' | 'employee' | 'vendor') => {
     setSelectedRole(role);
-    onUpdate({ ...data, role });
+    if (role === 'vendor') {
+      onUpdate({ ...data, role });
+    } else {
+      onUpdate({ ...data, role });
+    }
   };
 
-  const handleVendorClick = () => {
-    // Redirect to franchise inquiry page for vendor registration
-    navigate('/franchise-inquiry');
+  const handleVendorLogin = async () => {
+    const vendorId = 'vendor123';
+    const vendorPassword = 'vendor123';
+    
+    setIsLoggingIn(true);
+    setVendorLoginError('');
+    
+    // Simulate API call with hardcoded credentials
+    setTimeout(() => {
+      // For now, always succeed with hardcoded credentials
+      setIsVendorAuthenticated(true);
+      setIsLoggingIn(false);
+      
+      // Navigate to vendor form page
+      setTimeout(() => {
+        navigate('/vendor/vendor-form');
+      }, 500);
+    }, 1000);
   };
 
   const handleLoginClick = () => {
@@ -138,35 +162,150 @@ function Section7({ data, onUpdate, errors = {}, onAgentLogin, isAgentAuthentica
           {/* Vendor Card */}
           <button
             type="button"
-            onClick={handleVendorClick}
-            className="p-6 border-2 rounded-xl transition-all border-slate-300 bg-white hover:border-purple-400 hover:bg-purple-50 cursor-pointer hover:shadow-lg"
+            onClick={() => handleRoleSelect('vendor')}
+            disabled={isVendorAuthenticated}
+            className={`p-6 border-2 rounded-xl transition-all ${
+              selectedRole === 'vendor'
+                ? 'border-purple-500 bg-purple-50 shadow-lg'
+                : 'border-slate-300 bg-white hover:border-slate-400'
+            } ${isVendorAuthenticated ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
           >
             <div className="flex items-center gap-4">
-              <div className="p-3 rounded-full bg-slate-100 group-hover:bg-purple-100 transition-colors">
-                <Store className="w-8 h-8 text-slate-600" />
+              <div className={`p-3 rounded-full ${selectedRole === 'vendor' ? 'bg-purple-100' : 'bg-slate-100'}`}>
+                <Store className={`w-8 h-8 ${selectedRole === 'vendor' ? 'text-purple-600' : 'text-slate-600'}`} />
               </div>
               <div className="text-left">
                 <h3 className="text-xl font-bold text-slate-900">Vendor</h3>
                 <p className="text-sm text-slate-600">Register your business</p>
               </div>
             </div>
-            <div className="mt-3 flex items-center justify-center">
-              <span className="inline-flex items-center gap-2 text-purple-600 font-semibold text-sm">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-                DO IT YOURSELF
-              </span>
-            </div>
+            {selectedRole === 'vendor' && (
+              <div className="mt-3 flex items-center justify-center">
+                <span className="inline-flex items-center gap-2 text-purple-600 font-semibold">
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  Selected
+                </span>
+              </div>
+            )}
           </button>
         </div>
       </div>
 
       <div className="space-y-6">
-        {/* User Login Section */}
-        <div className={`border-2 rounded-lg p-6 ${
-          selectedRole === 'agent' ? 'bg-red-50 border-red-200' : 'bg-blue-50 border-blue-200'
-        }`}>
+        {/* Vendor Login Section */}
+        {selectedRole === 'vendor' && (
+          <div className="border-2 rounded-lg p-6 bg-purple-50 border-purple-200">
+            <h3 className="text-lg font-semibold text-slate-900 mb-4">
+              Vendor Authentication Required
+            </h3>
+            
+            {!isVendorAuthenticated ? (
+              <>
+                {!showVendorLoginForm ? (
+                  <button
+                    onClick={() => setShowVendorLoginForm(true)}
+                    className="w-full text-white py-3 px-6 rounded-lg font-semibold transition-colors bg-purple-600 hover:bg-purple-700 disabled:bg-slate-400 disabled:cursor-not-allowed"
+                  >
+                    Login as Vendor
+                  </button>
+                ) : (
+                  <form
+                    onSubmit={async (e) => {
+                      e.preventDefault();
+                      // use hardcoded credentials (vendor123/vendor123)
+                      setIsLoggingIn(true);
+                      setVendorLoginError('');
+                      try {
+                        await handleVendorLogin();
+                      } catch (err) {
+                        setVendorLoginError('Login failed');
+                        setIsLoggingIn(false);
+                      }
+                    }}
+                    className="space-y-4"
+                  >
+                    <div>
+                      <label className="block text-sm font-medium text-slate-700 mb-2">
+                        Username <span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        value={vendorUsername}
+                        onChange={(e) => setVendorUsername(e.target.value)}
+                        placeholder="Enter username"
+                        className="w-full px-4 py-2 border-2 border-slate-300 rounded-lg focus:outline-none"
+                        disabled={true}
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-slate-700 mb-2">
+                        Password <span className="text-red-500">*</span>
+                      </label>
+                      <input
+                        type="password"
+                        value={vendorPassword}
+                        onChange={(e) => setVendorPassword(e.target.value)}
+                        placeholder="Enter password"
+                        className="w-full px-4 py-2 border-2 border-slate-300 rounded-lg focus:outline-none"
+                        disabled={true}
+                      />
+                    </div>
+
+                    {vendorLoginError && (
+                      <div className="mt-3 bg-red-50 border-2 border-red-200 rounded-lg p-3">
+                        <p className="text-red-700 text-sm font-medium">{vendorLoginError}</p>
+                      </div>
+                    )}
+
+                    <div className="flex gap-3">
+                      <button
+                        type="submit"
+                        disabled={isLoggingIn}
+                        className="flex-1 text-white py-2 px-4 rounded-lg font-semibold bg-purple-600 hover:bg-purple-700 disabled:bg-slate-400 disabled:cursor-not-allowed"
+                      >
+                        {isLoggingIn ? 'Logging in...' : 'Login'}
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setShowVendorLoginForm(false);
+                          setVendorLoginError('');
+                        }}
+                        disabled={isLoggingIn}
+                        className="px-6 py-2 border-2 border-slate-300 text-slate-700 rounded-lg font-semibold hover:bg-slate-100 transition-colors"
+                      >
+                        Cancel
+                      </button>
+                    </div>
+                  </form>
+                )}
+              </>
+            ) : (
+              <div className="bg-green-50 border-2 border-green-200 rounded-lg p-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center">
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-green-900 font-semibold">Vendor Authenticated</p>
+                    <p className="text-green-700 text-sm">Redirecting to vendor form...</p>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Agent/Employee Login Section */}
+        {selectedRole !== 'vendor' && (
+          <div className={`border-2 rounded-lg p-6 ${
+            selectedRole === 'agent' ? 'bg-red-50 border-red-200' : 'bg-blue-50 border-blue-200'
+          }`}>
           <h3 className="text-lg font-semibold text-slate-900 mb-4">
             {selectedRole === 'agent' ? 'Agent' : 'Employee'} Authentication Required
           </h3>
@@ -266,6 +405,7 @@ function Section7({ data, onUpdate, errors = {}, onAgentLogin, isAgentAuthentica
             </div>
           )}
         </div>
+        )}
 
         {isAgentAuthenticated && (
           <div className={`border-2 rounded-lg p-6 ${
