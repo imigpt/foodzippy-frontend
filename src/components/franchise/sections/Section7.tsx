@@ -205,7 +205,7 @@ function Section7({ data, onUpdate, errors = {}, onAgentLogin, isAgentAuthentica
               <>
                 {!showVendorLoginForm ? (
                   <button
-                    onClick={() => setShowVendorLoginForm(true)}
+                    onClick={() => navigate('/vendor/vendor-form')}
                     className="w-full text-white py-3 px-6 rounded-lg font-semibold transition-colors bg-purple-600 hover:bg-purple-700 disabled:bg-slate-400 disabled:cursor-not-allowed"
                   >
                     Login as Vendor

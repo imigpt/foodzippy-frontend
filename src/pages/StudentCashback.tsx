@@ -1,5 +1,4 @@
-import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, Gift, Percent, Smartphone, BookOpen, GraduationCap, Star } from 'lucide-react';
+import { Gift, Percent, Smartphone, BookOpen, GraduationCap, Star } from 'lucide-react';
 import Footer from '../components/Footer';
 
 const benefits = [
@@ -44,22 +43,8 @@ const steps = [
 ];
 
 function StudentCashback() {
-  const navigate = useNavigate();
-
   return (
     <div className="min-h-screen bg-white">
-      {/* Top Bar */}
-      <div className="bg-gradient-to-r from-[#E82335] to-[#F7C150] text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center gap-4">
-          <button
-            onClick={() => navigate('/')}
-            className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-colors"
-          >
-            <ArrowLeft className="w-5 h-5 text-white" />
-          </button>
-          <h1 className="text-xl sm:text-2xl font-bold font-montserrat">Student Cashback</h1>
-        </div>
-      </div>
 
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-gradient-to-br from-[#FFF5F5] via-white to-[#FFFBEB] py-16 sm:py-24">

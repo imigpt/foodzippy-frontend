@@ -541,24 +541,7 @@ function FranchiseRegistration() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
-      {/* Header with back button */}
-      <div className="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-sm">
-        <div className="max-w-3xl mx-auto px-6 py-4 flex items-center justify-between">
-          <button
-            onClick={() => navigate('/')}
-            className="flex items-center gap-2 text-slate-600 hover:text-slate-900 transition-colors"
-          >
-            <ChevronLeft size={24} />
-            <span className="font-medium">Back</span>
-          </button>
-          <div className="text-center">
-            <p className="text-sm font-medium text-slate-500">
-              Step {currentSection} of 8
-            </p>
-          </div>
-         
-        </div>
-      </div>
+
 
       {/* Progress bar */}
       <div className="bg-white border-b border-slate-200">

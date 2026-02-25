@@ -15,7 +15,7 @@ function CitiesWeServe() {
         {/* Section Header */}
         <div className="text-center mb-12">
           <h2 className="text-4xl sm:text-5xl font-bold text-[#E82335] mb-3">
-            Cities We Serve
+            Cities We Serve soon
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             We are currently delivering in the following cities across Uttar Pradesh

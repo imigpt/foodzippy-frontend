@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import RestaurantsSection from './components/RestaurantsSection';
@@ -8,9 +7,9 @@ import CitiesWeServe from './components/CitiesWeServe';
 import TestimonialsSection from './components/TestimonialsSection';
 import PartnershipSection from './components/PartnershipSection';
 import Footer from './components/Footer';
-import OurStoryPanel from './components/OurStoryPanel';
+import OurStoryPage from './pages/OurStory';
+import ScrollToTop from './components/ScrollToTop';
 import WhatWeOffer from './components/WhatWeOffer';
-import HowItWorks from './components/HowItWorks';
 import FranchiseRegistration from './pages/FranchiseRegistration';
 import ServiceRegistration from './pages/ServiceRegistration';
 import FranchiseInquiry from './pages/FranchiseInquiry';
@@ -29,32 +28,26 @@ import AgentFollowUps from './pages/agent/AgentFollowUps';
 // Employee Pages (use same components with different routes)
 import EmployeeDashboard from './pages/agent/EmployeeDashboard';
 
+function PublicLayout() {
+  return (
+    <>
+      <Navbar />
+      <Outlet />
+    </>
+  );
+}
+
 function HomePage() {
-  const [isStoryPanelOpen, setIsStoryPanelOpen] = useState(false);
-
-  useEffect(() => {
-    if (isStoryPanelOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-  }, [isStoryPanelOpen]);
-
   return (
     <div className="min-h-screen bg-white">
-      <Navbar 
-        onOpenStoryPanel={() => setIsStoryPanelOpen(true)} 
-      />
       <Hero />
       <WhatWeOffer />
-      <HowItWorks />
       <RestaurantsSection />
       <StatsSection />
       <CitiesWeServe />
       <TestimonialsSection />
       <PartnershipSection />
       <Footer />
-      <OurStoryPanel isOpen={isStoryPanelOpen} onClose={() => setIsStoryPanelOpen(false)} />
     </div>
   );
 }
@@ -62,13 +55,18 @@ function HomePage() {
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/vendor-registration" element={<FranchiseRegistration />} />
-        <Route path="/service-registration" element={<ServiceRegistration />} />
-        <Route path="/franchise-inquiry" element={<FranchiseInquiry />} />
-        <Route path="/investor-inquiry" element={<InvestorInquiry />} />
-        <Route path="/student-cashback" element={<StudentCashback />} />
+        {/* Public routes with shared Navbar */}
+        <Route element={<PublicLayout />}>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/our-story" element={<OurStoryPage />} />
+          <Route path="/vendor-registration" element={<FranchiseRegistration />} />
+          <Route path="/service-registration" element={<ServiceRegistration />} />
+          <Route path="/franchise-inquiry" element={<FranchiseInquiry />} />
+          <Route path="/investor-inquiry" element={<InvestorInquiry />} />
+          <Route path="/student-cashback" element={<StudentCashback />} />
+        </Route>
         
         {/* Agent Routes */}
         <Route path="/agent/dashboard" element={<AgentDashboard />} />

@@ -1,27 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { Facebook, Instagram, Mail } from 'lucide-react';
-
-
-// Simple, small X icon (uses currentColor so className="text-white" works)
-function XIcon({ size = 20, className = '' }: { size?: number; className?: string }) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-      aria-hidden="true"
-      role="img"
-    >
-      <path
-        d="M18.3 5.71a1 1 0 0 0-1.41 0L12 10.59 7.11 5.7A1 1 0 1 0 5.7 7.11L10.59 12l-4.89 4.89a1 1 0 1 0 1.41 1.41L12 13.41l4.89 4.89a1 1 0 0 0 1.41-1.41L13.41 12l4.89-4.89a1 1 0 0 0 0-1.4z"
-        fill="currentColor"
-      />
-    </svg>
-  );
-}
+import { Facebook, Instagram, LinkedinIcon, Mail } from 'lucide-react';
 
 function Footer() {
   const navigate = useNavigate();
@@ -52,7 +30,7 @@ function Footer() {
             </div>
 
             <p className="text-gray-400 mb-6 leading-relaxed">
-              Delivering love to students in Agra & Noida. Built for students.
+              {/* Delivering love to students in Agra & Noida. Built for students. */}
             </p>
 
             {/* UPDATED SOCIAL ICONS */}
@@ -87,8 +65,22 @@ function Footer() {
           <div>
             <h4 className="text-lg font-semibold mb-4">Company</h4>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-400 hover:text-yellow-500 transition-colors">About Us</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-yellow-500 transition-colors">Our Story</a></li>
+              <li>
+                <button
+                  onClick={() => navigate('/')}
+                  className="text-gray-400 hover:text-yellow-500 transition-colors text-left"
+                >
+                  Home
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => navigate('/our-story')}
+                  className="text-gray-400 hover:text-yellow-500 transition-colors text-left"
+                >
+                  Our Story
+                </button>
+              </li>
               <li><a href="#" className="text-gray-400 hover:text-yellow-500 transition-colors">Careers</a></li>
               <li><a href="#" className="text-gray-400 hover:text-yellow-500 transition-colors">Contact</a></li>
             </ul>
@@ -99,8 +91,8 @@ function Footer() {
             <h4 className="text-lg font-semibold mb-4">Services</h4>
             <ul className="space-y-2">
               <li><a href="#" className="text-gray-400 hover:text-yellow-500 transition-colors">Food Delivery</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-yellow-500 transition-colors">Subscription Tiffin</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-yellow-500 transition-colors">Food Pickup</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-yellow-500 transition-colors">Subscription</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-yellow-500 transition-colors">Take Away</a></li>
               <li><a href="#" className="text-gray-400 hover:text-yellow-500 transition-colors">Drive Through</a></li>
               
             </ul>
@@ -108,7 +100,7 @@ function Footer() {
 
           {/* Newsletter */}
           <div>
-            <p className="text-gray-400 mb-4 text-sm">Subscribe to get updates on offers</p>
+            <p className="text-gray-400 mb-4 text-sm">Subscribe to get updates and offers</p>
             <div className="flex gap-2">
               <input
   type="email"
@@ -150,9 +142,9 @@ function Footer() {
               <a
                 href="#"
                 className="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center hover:bg-yellow-600 transition-colors duration-200"
-                aria-label="X (Twitter)"
+                aria-label="LinkedIn"
               >
-                <XIcon size={18} className="text-black" />
+                <LinkedinIcon size={18} className="text-black" />
               </a>
             </div>
           </div>
@@ -163,7 +155,7 @@ function Footer() {
         <div className="border-t border-gray-800 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
             <div className="text-center md:text-left">Email us • info@foodzippy.co</div>
-            <div>© 2024 Foodzippy. All Rights Reserved.</div>
+            <div>© 2025 Foodzippy. All Rights Reserved.</div>
           </div>
         </div>
 

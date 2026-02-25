@@ -2,11 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 
-interface NavbarProps {
-  onOpenStoryPanel: () => void;
-}
-
-function Navbar({ onOpenStoryPanel }: NavbarProps) {
+function Navbar() {
   const navigate = useNavigate();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -56,7 +52,14 @@ function Navbar({ onOpenStoryPanel }: NavbarProps) {
           <div className="hidden md:flex items-center space-x-8">
 
             <button
-              onClick={onOpenStoryPanel}
+              onClick={() => navigate('/')}
+              className={`${textColor} hover:${textColor} font-montserrat hover:bg-white/20 px-5 py-2 rounded-full transition-all duration-300 font-medium`}
+            >
+              Home
+            </button>
+
+            <button
+              onClick={() => navigate('/our-story')}
               className={`${textColor} hover:${textColor} font-montserrat font-medium hover:bg-white/20 px-5 py-2 rounded-full transition-all duration-300`}
             >
               Our Story
@@ -69,12 +72,26 @@ function Navbar({ onOpenStoryPanel }: NavbarProps) {
               Vendor Registration
             </button>
 
-            <a
-              href="#restaurants"
+            <button
+              onClick={() => {
+                if (window.location.pathname !== '/') {
+                  navigate('/');
+                  setTimeout(() => {
+                    const el = document.getElementById('restaurants');
+                    if (el) window.scrollTo({ top: el.offsetTop, left: 0, behavior: 'auto' });
+                    else window.location.hash = '#restaurants';
+                  }, 50);
+                } else {
+                  const el = document.getElementById('restaurants');
+                  if (el) window.scrollTo({ top: el.offsetTop, left: 0, behavior: 'auto' });
+                  else window.location.hash = '#restaurants';
+                }
+                setIsMobileMenuOpen(false);
+              }}
               className={`${textColor} hover:${textColor} font-montserrat hover:bg-white/20 px-5 py-2 rounded-full transition-all duration-300 font-medium`}
             >
               Restaurants
-            </a>
+            </button>
             <button
               onClick={() => navigate('/franchise-inquiry')}
               className={`${textColor} hover:${textColor} font-montserrat hover:bg-white/20 px-5 py-2 rounded-full transition-all duration-300 font-medium`}
@@ -86,15 +103,8 @@ function Navbar({ onOpenStoryPanel }: NavbarProps) {
               onClick={() => navigate('/investor-inquiry')}
               className={`${textColor} hover:${textColor} font-montserrat hover:bg-white/20 px-5 py-2 rounded-full transition-all duration-300 font-medium`}
             >
-              Investor
+              Investors
             </button>
-
-            {/* <button
-              className={`${textColor} hover:${textColor} font-montserrat hover:bg-white/20 px-5 py-2 rounded-full transition-all duration-200 font-medium flex items-center gap-2`}
-            >
-              <MapPin size={20} color={iconColor} />
-              Choose your city
-            </button> */}
 
             <button
               onClick={() => navigate('/student-cashback')}
@@ -123,7 +133,17 @@ function Navbar({ onOpenStoryPanel }: NavbarProps) {
 
             <button
               onClick={() => {
-                onOpenStoryPanel();
+                navigate('/');
+                setIsMobileMenuOpen(false);
+              }}
+              className="block w-full text-left px-3 py-2 text-white hover:bg-yellow-500 rounded-md font-medium"
+            >
+              Home
+            </button>
+
+            <button
+              onClick={() => {
+                navigate('/our-story');
                 setIsMobileMenuOpen(false);
               }}
               className="block w-full text-left px-3 py-2 text-white hover:bg-yellow-500 rounded-md font-medium"
@@ -141,9 +161,26 @@ function Navbar({ onOpenStoryPanel }: NavbarProps) {
               Vendor Register
             </button>
 
-            <a href="#restaurants" className="block px-3 py-2 text-white hover:bg-yellow-500 rounded-md font-medium">
+            <button
+              onClick={() => {
+                if (window.location.pathname !== '/') {
+                  navigate('/');
+                  setTimeout(() => {
+                    const el = document.getElementById('restaurants');
+                    if (el) window.scrollTo({ top: el.offsetTop, left: 0, behavior: 'auto' });
+                    else window.location.hash = '#restaurants';
+                  }, 50);
+                } else {
+                  const el = document.getElementById('restaurants');
+                  if (el) window.scrollTo({ top: el.offsetTop, left: 0, behavior: 'auto' });
+                  else window.location.hash = '#restaurants';
+                }
+                setIsMobileMenuOpen(false);
+              }}
+              className="block w-full text-left px-3 py-2 text-white hover:bg-yellow-500 rounded-md font-medium"
+            >
               Restaurants
-            </a>
+            </button>
 
             <button
               onClick={() => {

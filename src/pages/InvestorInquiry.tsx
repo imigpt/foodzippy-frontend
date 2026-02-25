@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Send, User, Mail, Phone, MapPin, Building2, ArrowLeft, IndianRupee } from 'lucide-react';
+import { Send, User, Mail, Phone, MapPin, Building2, IndianRupee } from 'lucide-react';
 
 interface FormData {
   name: string;
@@ -27,24 +27,6 @@ function InvestorInquiry() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errors, setErrors] = useState<Partial<FormData>>({});
   
-  // Background colors (RED first, YELLOW second) - same as main navbar
-  const colors = ['#E82335', '#F7C150'];
-  const [bgIndex, setBgIndex] = useState(0);
-
-  // AUTO CHANGE BG
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setBgIndex((i) => (i + 1) % colors.length);
-    }, 3000);
-    return () => clearInterval(timer);
-  }, []);
-
-  // AUTO TEXT COLOR (RED BG → WHITE TEXT, YELLOW BG → BLACK TEXT)
-  const textColor = bgIndex === 0 ? "text-white" : "text-black";
-
-  // Pick the correct logo based on background color
-  const logoSrc = bgIndex === 1 ? "/foodzip2.png" : "/foodzip1.png";
-
   const validateForm = (): boolean => {
     const newErrors: Partial<FormData> = {};
 
@@ -157,42 +139,6 @@ function InvestorInquiry() {
 
       {/* Content */}
       <div className="relative z-10">
-        {/* Navbar - Same as Home Page */}
-        <nav
-          className="sticky top-0 z-50 transition-colors duration-500"
-          style={{ backgroundColor: colors[bgIndex] }}
-        >
-        <div className="max-w-8xl mx-auto px-6 sm:px-7 lg:px-9">
-          <div className="flex justify-between items-center h-24 py-2">
-            {/* LOGO */}
-            <div className="flex-shrink-0">
-              <img
-                src={logoSrc}
-                alt="Foodzippy logo"
-                className="h-28 sm:h-32 md:h-40 w-auto object-contain transition-all duration-300 cursor-pointer"
-                loading="lazy"
-                onClick={() => navigate('/')}
-                onError={(e) => {
-                  const el = e.currentTarget as HTMLImageElement;
-                  el.onerror = null;
-                  el.src = 'data:image/svg+xml;utf8,' + encodeURIComponent(
-                    '<svg xmlns="http://www.w3.org/2000/svg" width="160" height="48" viewBox="0 0 160 48"><rect width="100%" height="100%" fill="%23F59E0B" rx="8"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="white">Foodzippy</text></svg>'
-                  );
-                }}
-              />
-            </div>
-
-            {/* Back to Home Button */}
-            <button
-              onClick={() => navigate('/')}
-              className={`${textColor} hover:bg-white/20 px-6 py-3 rounded-full transition-all duration-300 font-montserrat font-medium flex items-center gap-2`}
-            >
-              <ArrowLeft size={20} />
-              <span>Back to Home</span>
-            </button>
-          </div>
-        </div>
-      </nav>
 
       {/* Page Title Section */}
       <div className="max-w-4xl mx-auto px-4 pt-8 pb-4">

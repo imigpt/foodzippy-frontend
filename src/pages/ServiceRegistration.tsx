@@ -348,41 +348,7 @@ function ServiceRegistration() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-yellow-50">
-      {/* Header */}
-      <div className="shadow-md sticky top-0 z-40" style={{ backgroundColor: '#F7C150' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-1">
-          <div className="flex items-center justify-between">
-            {/* Logo on the left */}
-            <div className="flex-shrink-0">
-              <img
-                src="/foodzip2.png"
-                alt="Foodzippy logo"
-                className="h-32 w-auto object-contain"
-                loading="lazy"
-                onError={(e) => {
-                  const el = e.currentTarget as HTMLImageElement;
-                  el.onerror = null;
-                  el.src = 'data:image/svg+xml;utf8,' + encodeURIComponent(
-                    '<svg xmlns="http://www.w3.org/2000/svg" width="160" height="48" viewBox="0 0 160 48"><rect width="100%" height="100%" fill="%23F7C150" rx="8"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="black">Foodzippy</text></svg>'
-                  );
-                }}
-              />
-            </div>
-            
-            {/* Title in center */}
-            <h1 className="text-2xl font-bold text-slate-900">Vendor Registration</h1>
-            
-            {/* Back button on the right */}
-            <button
-              onClick={handleBack}
-              className="flex items-center gap-2 text-slate-800 hover:text-slate-900 transition-colors font-medium"
-            >
-              <ChevronLeft size={24} />
-              <span className="font-medium">Back to Home</span>
-            </button>
-          </div>
-        </div>
-      </div>
+
 
       {/* Progress Indicator */}
       <div className="bg-white border-b border-slate-200">

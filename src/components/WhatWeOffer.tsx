@@ -9,13 +9,13 @@ const services = [
   },
   {
     icon: <CalendarDays className="w-6 h-6 text-red-500" />,
-    title: "Subscription Tiffin",
+    title: "Subscription",
     description: "Daily fresh homemade meals",
     image: "/Tiffin.png"
   },
   {
     icon: <ShoppingBag className="w-6 h-6 text-red-500" />,
-    title: "Food Pickup",
+    title: "Take away",
     description: "Order and collect at your convenience",
     image: "/foodpickup.png"
   },
