@@ -1,11 +1,71 @@
 import { useNavigate } from 'react-router-dom';
 import { Facebook, Instagram, LinkedinIcon, Mail } from 'lucide-react';
+import { useState } from 'react';
 
-function Footer() {
+const Footer = () => {
   const navigate = useNavigate();
+  const [subEmail, setSubEmail] = useState('');
+  const [subMsg, setSubMsg] = useState('');
+  const [subError, setSubError] = useState(false);
+  const [subLoading, setSubLoading] = useState(false);
+
+  const handleSubscribe = async () => {
+    setSubMsg('');
+    setSubError(false);
+    if (!subEmail || !/^\S+@\S+\.\S+$/.test(subEmail)) {
+      setSubMsg('Please enter a valid email');
+      setSubError(true);
+      return;
+    }
+    setSubLoading(true);
+    try {
+      const res = await fetch(
+        `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/subscribers/subscribe`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: subEmail }),
+        }
+      );
+      const data = await res.json();
+      if (res.status === 409) {
+        setSubMsg('Already subscribed');
+        setSubError(false);
+      } else if (data.success) {
+        setSubMsg('Subscribed successfully');
+        setSubError(false);
+        setSubEmail('');
+      } else {
+        setSubMsg(data.message || 'Something went wrong');
+        setSubError(true);
+      }
+    } catch {
+      setSubMsg('Failed to subscribe. Try again.');
+      setSubError(true);
+    } finally {
+      setSubLoading(false);
+    }
+  };
+
+  const goToWhatWeOffer = () => {
+    const scrollToSection = () => {
+      const el = document.getElementById('what-we-offer');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    };
+
+    if (window.location.pathname !== '/') {
+      navigate('/');
+      // allow route change + render
+      setTimeout(scrollToSection, 80);
+    } else {
+      scrollToSection();
+    }
+  };
 
   return (
-    <footer className="bg-black text-white pt-16 pb-8">
+    <footer className="bg-black text-white pt-16 pb-8 relative z-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-10 pt-6">
 
@@ -21,10 +81,10 @@ function Footer() {
                   const el = e.currentTarget as HTMLImageElement;
                   el.onerror = null;
                   el.src =
-                    'data:image/svg+xml;utf8,' +
-                    encodeURIComponent(
-                      '<svg xmlns="http://www.w3.org/2000/svg" width="160" height="48" viewBox="0 0 160 48"><rect width="100%" height="100%" fill="%23F59E0B" rx="8"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="white">Foodzippy</text></svg>'
-                    );
+                      'data:image/svg+xml;utf8,' +
+                      encodeURIComponent(
+                        '<svg xmlns="http://www.w3.org/2000/svg" width="160" height="48" viewBox="0 0 160 48"><rect width="100%" height="100%" fill="%23F59E0B" rx="8"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="\"Century Gothic\",CenturyGothic,AppleGothic,sans-serif" font-size="18" fill="white">Foodzippy</text></svg>'
+                      );
                 }}
               />
             </div>
@@ -81,7 +141,14 @@ function Footer() {
                   Our Story
                 </button>
               </li>
-              <li><a href="#" className="text-gray-400 hover:text-yellow-500 transition-colors">Careers</a></li>
+              <li>
+                <button
+                  onClick={() => navigate('/careers')}
+                  className="text-gray-400 hover:text-yellow-500 transition-colors text-left"
+                >
+                  Careers
+                </button>
+              </li>
               <li><a href="#" className="text-gray-400 hover:text-yellow-500 transition-colors">Contact</a></li>
             </ul>
           </div>
@@ -90,11 +157,21 @@ function Footer() {
           <div>
             <h4 className="text-lg font-semibold mb-4">Services</h4>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-400 hover:text-yellow-500 transition-colors">Food Delivery</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-yellow-500 transition-colors">Subscription</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-yellow-500 transition-colors">Take Away</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-yellow-500 transition-colors">Drive Through</a></li>
-              
+              <li>
+                <button onClick={goToWhatWeOffer} className="text-gray-400 hover:text-yellow-500 transition-colors text-left">Food Delivery</button>
+              </li>
+              <li>
+                <button onClick={goToWhatWeOffer} className="text-gray-400 hover:text-yellow-500 transition-colors text-left">Subscription</button>
+              </li>
+              <li>
+                <button onClick={goToWhatWeOffer} className="text-gray-400 hover:text-yellow-500 transition-colors text-left">Take Away</button>
+              </li>
+              <li>
+                <button onClick={goToWhatWeOffer} className="text-gray-400 hover:text-yellow-500 transition-colors text-left">Drive Through</button>
+              </li>
+              <li>
+                <button onClick={goToWhatWeOffer} className="text-gray-400 hover:text-yellow-500 transition-colors text-left">Dine In</button>
+              </li>
             </ul>
           </div>
 
@@ -104,23 +181,37 @@ function Footer() {
             <div className="flex gap-2">
               <input
   type="email"
+  aria-label="Subscribe email"
   placeholder="Your email"
+  value={subEmail}
+  onChange={(e) => { setSubEmail(e.target.value); setSubMsg(''); }}
+  onKeyDown={(e) => e.key === 'Enter' && handleSubscribe()}
   className="
-    flex-1 px-4 py-2 
+    flex-1 px-4 py-3 
     bg-white 
     text-black 
-    placeholder-gray-600 
+    placeholder-gray-500 
     rounded-full 
+    border border-gray-200
+    shadow-sm
     focus:outline-none 
     focus:ring-2 
-    focus:ring-yellow-500
+    focus:ring-yellow-400
   "
-/>
+  />
 
-              <button className="bg-yellow-500 p-2 rounded-full hover:bg-yellow-600 transition-colors">
+              <button
+                onClick={handleSubscribe}
+                disabled={subLoading}
+                aria-label="Subscribe"
+                className="bg-yellow-500 p-3 rounded-full hover:bg-yellow-600 transition-colors disabled:opacity-50 shadow-md flex items-center justify-center"
+              >
                 <Mail size={20} />
               </button>
             </div>
+            {subMsg && (
+              <p className={`text-sm mt-2 ${subError ? 'text-red-400' : 'text-green-400'}`}>{subMsg}</p>
+            )}
             {/* Social icons under subscribe */}
             <div className="mt-4 flex items-center gap-3">
               <a
@@ -155,7 +246,7 @@ function Footer() {
         <div className="border-t border-gray-800 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
             <div className="text-center md:text-left">Email us • info@foodzippy.co</div>
-            <div>© 2025 Foodzippy. All Rights Reserved.</div>
+            <div>© 2025 <span className="brand-font">Foodzippy</span>. All Rights Reserved.</div>
           </div>
         </div>
 

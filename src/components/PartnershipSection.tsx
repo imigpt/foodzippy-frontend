@@ -1,4 +1,5 @@
 import { Bike, Store } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 interface PartnerCard {
   icon: typeof Bike;
@@ -23,6 +24,7 @@ const partners: PartnerCard[] = [
 ];
 
 function PartnershipSection() {
+  const navigate = useNavigate();
   return (
     <section className="py-16 sm:py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -62,7 +64,16 @@ function PartnershipSection() {
                   <p className="text-gray-600 mb-6 leading-relaxed">
                     {partner.description}
                   </p>
-                  <button className="bg-yellow-500 text-white px-6 py-3 rounded-full hover:bg-yellow-600 transition-all duration-200 transform hover:scale-105 font-semibold">
+                  <button
+                    onClick={() => {
+                      if (partner.title === 'Join as Delivery Partner') {
+                        navigate('/delivery-partner-register');
+                      } else {
+                        navigate('/service-registration');
+                      }
+                    }}
+                    className="bg-yellow-500 text-white px-6 py-3 rounded-full hover:bg-yellow-600 transition-all duration-200 transform hover:scale-105 font-semibold"
+                  >
                     Learn More
                   </button>
                 </div>

@@ -143,11 +143,11 @@ function InvestorInquiry() {
       {/* Page Title Section */}
       <div className="max-w-4xl mx-auto px-4 pt-8 pb-4">
         <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-800 font-montserrat">
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-800 font-century gothic">
             Investor Inquiry
           </h1>
-          <p className="text-gray-600 mt-2 font-montserrat">
-            Interested in investing with Foodzippy? Fill out the form below and our team will get in touch with you.
+          <p className="text-gray-600 mt-2 font-century gothic">
+            Interested in investing with <span className="brand-font">Foodzippy</span>? Fill out the form below and our team will get in touch with you.
           </p>
         </div>
       </div>
@@ -177,7 +177,7 @@ function InvestorInquiry() {
                     />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold text-gray-800 font-montserrat">
+                <h3 className="text-2xl font-bold text-gray-800 font-century gothic">
                   Thank You!
                 </h3>
                 <p className="text-gray-600 mt-2">
@@ -191,7 +191,7 @@ function InvestorInquiry() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Name Field */}
                 <div className="group">
-                  <label className="block text-sm font-medium text-[#E82335] mb-2 font-montserrat">
+                  <label className="block text-sm font-medium text-[#E82335] mb-2 font-century gothic">
                     Full Name <span className="text-red-500">*</span>
                   </label>
                   <div className="relative">
@@ -205,7 +205,7 @@ function InvestorInquiry() {
                       value={formData.name}
                       onChange={handleChange}
                       placeholder="Enter your full name"
-                      className={`w-full pl-11 pr-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-0 transition-all duration-200 font-montserrat ${
+                      className={`w-full pl-11 pr-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-0 transition-all duration-200 font-century gothic ${
                         errors.name
                           ? 'border-red-400 focus:border-red-500'
                           : 'border-gray-200 focus:border-[#E82335]'
@@ -221,7 +221,7 @@ function InvestorInquiry() {
 
                 {/* Email Field */}
                 <div className="group">
-                  <label className="block text-sm font-medium text-[#E82335] mb-2 font-montserrat">
+                  <label className="block text-sm font-medium text-[#E82335] mb-2 font-century gothic">
                     Email Address <span className="text-red-500">*</span>
                   </label>
                   <div className="relative">
@@ -235,7 +235,7 @@ function InvestorInquiry() {
                       value={formData.email}
                       onChange={handleChange}
                       placeholder="your@email.com"
-                      className={`w-full pl-11 pr-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-0 transition-all duration-200 font-montserrat ${
+                      className={`w-full pl-11 pr-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-0 transition-all duration-200 font-century gothic ${
                         errors.email
                           ? 'border-red-400 focus:border-red-500'
                           : 'border-gray-200 focus:border-[#E82335]'
@@ -251,7 +251,7 @@ function InvestorInquiry() {
 
                 {/* Phone Field */}
                 <div className="group">
-                  <label className="block text-sm font-medium text-[#E82335] mb-2 font-montserrat">
+                  <label className="block text-sm font-medium text-[#E82335] mb-2 font-century gothic">
                     Phone Number <span className="text-red-500">*</span>
                   </label>
                   <div className="relative">
@@ -265,7 +265,7 @@ function InvestorInquiry() {
                       value={formData.phone}
                       onChange={handleChange}
                       placeholder="Enter your phone number"
-                      className={`w-full pl-11 pr-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-0 transition-all duration-200 font-montserrat ${
+                      className={`w-full pl-11 pr-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-0 transition-all duration-200 font-century gothic ${
                         errors.phone
                           ? 'border-red-400 focus:border-red-500'
                           : 'border-gray-200 focus:border-[#E82335]'
@@ -283,7 +283,7 @@ function InvestorInquiry() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {/* City Field */}
                   <div className="group">
-                    <label className="block text-sm font-medium text-[#E82335] mb-2 font-montserrat">
+                    <label className="block text-sm font-medium text-[#E82335] mb-2 font-century gothic">
                       City <span className="text-red-500">*</span>
                     </label>
                     <div className="relative">
@@ -297,7 +297,7 @@ function InvestorInquiry() {
                         value={formData.city}
                         onChange={handleChange}
                         placeholder="Your city"
-                        className={`w-full pl-11 pr-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-0 transition-all duration-200 font-montserrat ${
+                        className={`w-full pl-11 pr-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-0 transition-all duration-200 font-century gothic ${
                           errors.city
                             ? 'border-red-400 focus:border-red-500'
                             : 'border-gray-200 focus:border-[#E82335]'
@@ -313,7 +313,7 @@ function InvestorInquiry() {
 
                   {/* State Field */}
                   <div className="group">
-                    <label className="block text-sm font-medium text-[#E82335] mb-2 font-montserrat">
+                    <label className="block text-sm font-medium text-[#E82335] mb-2 font-century gothic">
                       State <span className="text-red-500">*</span>
                     </label>
                     <div className="relative">
@@ -327,7 +327,7 @@ function InvestorInquiry() {
                         value={formData.state}
                         onChange={handleChange}
                         placeholder="Your state"
-                        className={`w-full pl-11 pr-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-0 transition-all duration-200 font-montserrat ${
+                        className={`w-full pl-11 pr-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-0 transition-all duration-200 font-century gothic ${
                           errors.state
                             ? 'border-red-400 focus:border-red-500'
                             : 'border-gray-200 focus:border-[#E82335]'
@@ -344,7 +344,7 @@ function InvestorInquiry() {
 
                 {/* Company Name Field (Optional) */}
                 <div className="group">
-                  <label className="block text-sm font-medium text-[#E82335] mb-2 font-montserrat">
+                  <label className="block text-sm font-medium text-[#E82335] mb-2 font-century gothic">
                     Company Name <span className="text-gray-400 text-xs">(Optional)</span>
                   </label>
                   <div className="relative">
@@ -358,14 +358,14 @@ function InvestorInquiry() {
                       value={formData.companyName}
                       onChange={handleChange}
                       placeholder="Your company name (if applicable)"
-                      className="w-full pl-11 pr-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-0 transition-all duration-200 font-montserrat border-gray-200 focus:border-[#E82335]"
+                      className="w-full pl-11 pr-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-0 transition-all duration-200 font-century gothic border-gray-200 focus:border-[#E82335]"
                     />
                   </div>
                 </div>
 
                 {/* Investor Amount Field (Required, INR) */}
                 <div className="group">
-                  <label className="block text-sm font-medium text-[#E82335] mb-2 font-montserrat">
+                  <label className="block text-sm font-medium text-[#E82335] mb-2 font-century gothic">
                     Investment Amount <span className="text-red-500">*</span> <span className="text-gray-400 text-xs"></span>
                   </label>
                   <div className="relative">
@@ -379,7 +379,7 @@ function InvestorInquiry() {
                       value={formData.investorAmount}
                       onChange={handleChange}
                       placeholder="Intended investment amount (INR ₹)"
-                      className="w-full pl-11 pr-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-0 transition-all duration-200 font-montserrat border-gray-200 focus:border-[#E82335]"
+                      className="w-full pl-11 pr-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-0 transition-all duration-200 font-century gothic border-gray-200 focus:border-[#E82335]"
                     />
                   </div>
                   {errors.investorAmount && (
@@ -393,7 +393,7 @@ function InvestorInquiry() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-gradient-to-r from-[#E82335] to-[#F7C150] text-white py-4 rounded-xl font-semibold font-montserrat hover:shadow-lg hover:shadow-orange-200 transform hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none"
+                  className="w-full bg-gradient-to-r from-[#E82335] to-[#F7C150] text-white py-4 rounded-xl font-semibold font-century gothic hover:shadow-lg hover:shadow-orange-200 transform hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none"
                 >
                   {isSubmitting ? (
                     <>
@@ -433,10 +433,10 @@ function InvestorInquiry() {
 
         {/* Info Box */}
         <div className="mt-8 bg-white/95 backdrop-blur-md rounded-2xl shadow-lg p-6 border border-gray-100">
-          <h3 className="text-lg font-bold text-gray-800 font-montserrat mb-3">
-            Why Invest with Foodzippy?
+          <h3 className="text-lg font-bold text-gray-800 font-century gothic mb-3">
+            Why Invest with <span className="brand-font">Foodzippy</span>?
           </h3>
-          <ul className="space-y-2 text-gray-600 font-montserrat">
+          <ul className="space-y-2 text-gray-600 font-century gothic">
             <li className="flex items-start gap-2">
               <span className="text-[#E82335] font-bold">✓</span>
               <span>Rapidly growing food delivery market</span>

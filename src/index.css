@@ -131,3 +131,13 @@ section {
 .animate-progress {
   animation: progress linear forwards;
 }
+
+/* Brand font utilities */
+.brand-font {
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+}
+
+/* Tailwind-compatible utility class used in some pages */
+.font-century-gothic {
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+}

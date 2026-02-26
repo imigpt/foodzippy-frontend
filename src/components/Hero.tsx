@@ -2,14 +2,17 @@ import { useEffect, useState } from "react";
 
 function Hero() {
   const images = [
-    "/food-image1.jpg",
-    "/food-image2.jpg",
-    "/food-image3.jpg",
-    "/food-image4.jpg",
-    "/food-image5.jpg",
-    "/food-image6.jpg",
-    "/food-image7.jpg",
-    "/food-image8.jpg",
+    "/new.jpeg",
+    "/new4.jpeg",
+    "/new2.jpeg",
+    "/new5.jpeg",
+    // "/food-image2.jpg",
+    // "/food-image3.jpg",
+    // "/food-image4.jpg",
+    // "/food-image5.jpg",
+    // "/food-image6.jpg",
+    // "/food-image7.jpg",
+    // "/food-image8.jpg",
   ];
 
   const [current, setCurrent] = useState(0);
@@ -110,7 +113,7 @@ function Hero() {
         </p> */}
         <br></br>
         
-        <p className="font-montserrat text-[#F7C150] text-5xl sm:text-6xl md:text-8xl mt-6 font-semibold">
+        <p className="font-century gothic text-[#F7C150] text-5xl sm:text-6xl md:text-8xl mt-6 font-semibold">
         Launching soon 
         </p>
         <p className="font-century-gothic text-3xl sm:text-4xl md:text-5xl mt-8 font-semibold">

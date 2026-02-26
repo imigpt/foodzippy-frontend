@@ -35,7 +35,7 @@ const services = [
 
 function WhatWeOffer() {
   return (
-    <section className="py-16 bg-white">
+    <section id="what-we-offer" className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-5xl font-belgiano font-bold text-purple-600 mb-3">What We Offer</h2>

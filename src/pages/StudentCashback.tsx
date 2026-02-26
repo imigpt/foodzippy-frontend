@@ -117,7 +117,7 @@ function StudentCashback() {
                 <div className="w-72 h-[520px] bg-gradient-to-br from-[#E82335] to-[#F7C150] rounded-[3rem] p-2 shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-500">
                   <div className="w-full h-full bg-white rounded-[2.5rem] flex flex-col items-center justify-center p-6">
                     <Smartphone className="w-16 h-16 text-[#E82335] mb-4" />
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2 text-center">Foodzippy</h3>
+                    <h3 className="text-2xl font-bold text-gray-900 mb-2 text-center"><span className="brand-font">Foodzippy</span></h3>
                     <p className="text-gray-500 text-center text-sm mb-6">Student Cashback Program</p>
                     <div className="bg-gradient-to-r from-[#E82335] to-[#F7C150] text-white text-3xl font-extrabold px-6 py-3 rounded-2xl shadow-lg">
                       20% OFF

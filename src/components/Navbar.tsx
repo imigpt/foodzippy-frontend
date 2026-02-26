@@ -42,7 +42,7 @@ function Navbar() {
                 const el = e.currentTarget as HTMLImageElement;
                 el.onerror = null;
                 el.src = 'data:image/svg+xml;utf8,' + encodeURIComponent(
-                  '<svg xmlns="http://www.w3.org/2000/svg" width="160" height="48" viewBox="0 0 160 48"><rect width="100%" height="100%" fill="%23F59E0B" rx="8"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="18" fill="white">Foodzippy</text></svg>'
+                  '<svg xmlns="http://www.w3.org/2000/svg" width="160" height="48" viewBox="0 0 160 48"><rect width="100%" height="100%" fill="%23F59E0B" rx="8"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="\"Century Gothic\",CenturyGothic,AppleGothic,sans-serif" font-size="18" fill="white">Foodzippy</text></svg>'
                 );
               }}
             />
@@ -53,21 +53,21 @@ function Navbar() {
 
             <button
               onClick={() => navigate('/')}
-              className={`${textColor} hover:${textColor} font-montserrat hover:bg-white/20 px-5 py-2 rounded-full transition-all duration-300 font-medium`}
+              className={`${textColor} hover:${textColor} font-century gothic hover:bg-white/20 px-5 py-2 rounded-full transition-all duration-300 font-medium`}
             >
               Home
             </button>
 
             <button
               onClick={() => navigate('/our-story')}
-              className={`${textColor} hover:${textColor} font-montserrat font-medium hover:bg-white/20 px-5 py-2 rounded-full transition-all duration-300`}
+              className={`${textColor} hover:${textColor} font-century gothic font-medium hover:bg-white/20 px-5 py-2 rounded-full transition-all duration-300`}
             >
               Our Story
             </button>
 
             <button
               onClick={() => navigate('/service-registration')}
-              className={`${textColor} hover:${textColor} font-montserrat hover:bg-white/20 px-5 py-2 rounded-full transition-all duration-300 font-medium`}
+              className={`${textColor} hover:${textColor} font-century gothic hover:bg-white/20 px-5 py-2 rounded-full transition-all duration-300 font-medium`}
             >
               Vendor Registration
             </button>
@@ -88,27 +88,27 @@ function Navbar() {
                 }
                 setIsMobileMenuOpen(false);
               }}
-              className={`${textColor} hover:${textColor} font-montserrat hover:bg-white/20 px-5 py-2 rounded-full transition-all duration-300 font-medium`}
+              className={`${textColor} hover:${textColor} font-century gothic hover:bg-white/20 px-5 py-2 rounded-full transition-all duration-300 font-medium`}
             >
               Restaurants
             </button>
             <button
               onClick={() => navigate('/franchise-inquiry')}
-              className={`${textColor} hover:${textColor} font-montserrat hover:bg-white/20 px-5 py-2 rounded-full transition-all duration-300 font-medium`}
+              className={`${textColor} hover:${textColor} font-century gothic hover:bg-white/20 px-5 py-2 rounded-full transition-all duration-300 font-medium`}
             >
               Franchises
             </button>
 
             <button
               onClick={() => navigate('/investor-inquiry')}
-              className={`${textColor} hover:${textColor} font-montserrat hover:bg-white/20 px-5 py-2 rounded-full transition-all duration-300 font-medium`}
+              className={`${textColor} hover:${textColor} font-century gothic hover:bg-white/20 px-5 py-2 rounded-full transition-all duration-300 font-medium`}
             >
               Investors
             </button>
 
             <button
               onClick={() => navigate('/student-cashback')}
-              className={`${textColor} hover:${textColor} font-montserrat hover:bg-white/20 px-5 py-2 rounded-full transition-all duration-200 font-medium`}
+              className={`${textColor} hover:${textColor} font-century gothic hover:bg-white/20 px-5 py-2 rounded-full transition-all duration-200 font-medium`}
             >
               Student Cashback
             </button>
@@ -205,6 +205,16 @@ function Navbar() {
               <MapPin size={20} color="white" />
               Choose your city
             </button> */}
+
+            <button
+              onClick={() => {
+                navigate('/careers');
+                setIsMobileMenuOpen(false);
+              }}
+              className="block w-full text-left px-3 py-2 text-white hover:bg-yellow-500 rounded-md font-medium"
+            >
+              Careers
+            </button>
 
             <button
               onClick={() => {

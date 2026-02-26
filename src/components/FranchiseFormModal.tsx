@@ -141,10 +141,10 @@ function FranchiseFormModal({ isOpen, onClose }: FranchiseFormModalProps) {
           </button>
 
           <div className="relative z-10">
-            <h2 className="text-2xl md:text-3xl font-bold text-white font-montserrat">
+            <h2 className="text-2xl md:text-3xl font-bold text-white font-century gothic">
               Franchise Inquiry
             </h2>
-            <p className="text-white/90 mt-2 font-montserrat">
+            <p className="text-white/90 mt-2 font-century gothic">
               Join the Foodzippy family! Fill out the form below.
             </p>
           </div>
@@ -169,7 +169,7 @@ function FranchiseFormModal({ isOpen, onClose }: FranchiseFormModalProps) {
                   />
                 </svg>
               </div>
-              <h3 className="text-2xl font-bold text-gray-800 font-montserrat">
+              <h3 className="text-2xl font-bold text-gray-800 font-century gothic">
                 Thank You!
               </h3>
               <p className="text-gray-600 mt-2">
@@ -180,7 +180,7 @@ function FranchiseFormModal({ isOpen, onClose }: FranchiseFormModalProps) {
             <form onSubmit={handleSubmit} className="space-y-5">
               {/* Name Field */}
               <div className="group">
-                <label className="block text-sm font-medium text-gray-700 mb-1 font-montserrat">
+                <label className="block text-sm font-medium text-gray-700 mb-1 font-century gothic">
                   Full Name
                 </label>
                 <div className="relative">
@@ -194,7 +194,7 @@ function FranchiseFormModal({ isOpen, onClose }: FranchiseFormModalProps) {
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="Enter your full name"
-                    className={`w-full pl-11 pr-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-0 transition-all duration-200 font-montserrat ${
+                    className={`w-full pl-11 pr-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-0 transition-all duration-200 font-century gothic ${
                       errors.name
                         ? 'border-red-400 focus:border-red-500'
                         : 'border-gray-200 focus:border-[#E82335]'
@@ -210,7 +210,7 @@ function FranchiseFormModal({ isOpen, onClose }: FranchiseFormModalProps) {
 
               {/* Email Field */}
               <div className="group">
-                <label className="block text-sm font-medium text-gray-700 mb-1 font-montserrat">
+                <label className="block text-sm font-medium text-gray-700 mb-1 font-century gothic">
                   Email Address
                 </label>
                 <div className="relative">
@@ -224,7 +224,7 @@ function FranchiseFormModal({ isOpen, onClose }: FranchiseFormModalProps) {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="your@email.com"
-                    className={`w-full pl-11 pr-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-0 transition-all duration-200 font-montserrat ${
+                    className={`w-full pl-11 pr-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-0 transition-all duration-200 font-century gothic ${
                       errors.email
                         ? 'border-red-400 focus:border-red-500'
                         : 'border-gray-200 focus:border-[#E82335]'
@@ -240,7 +240,7 @@ function FranchiseFormModal({ isOpen, onClose }: FranchiseFormModalProps) {
 
               {/* Phone Field */}
               <div className="group">
-                <label className="block text-sm font-medium text-gray-700 mb-1 font-montserrat">
+                <label className="block text-sm font-medium text-gray-700 mb-1 font-century gothic">
                   Phone Number
                 </label>
                 <div className="relative">
@@ -254,7 +254,7 @@ function FranchiseFormModal({ isOpen, onClose }: FranchiseFormModalProps) {
                     value={formData.phone}
                     onChange={handleChange}
                     placeholder="Enter your phone number"
-                    className={`w-full pl-11 pr-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-0 transition-all duration-200 font-montserrat ${
+                    className={`w-full pl-11 pr-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-0 transition-all duration-200 font-century gothic ${
                       errors.phone
                         ? 'border-red-400 focus:border-red-500'
                         : 'border-gray-200 focus:border-[#E82335]'
@@ -270,7 +270,7 @@ function FranchiseFormModal({ isOpen, onClose }: FranchiseFormModalProps) {
 
               {/* Description Field */}
               <div className="group">
-                <label className="block text-sm font-medium text-gray-700 mb-1 font-montserrat">
+                <label className="block text-sm font-medium text-gray-700 mb-1 font-century gothic">
                   Description
                 </label>
                 <div className="relative">
@@ -284,7 +284,7 @@ function FranchiseFormModal({ isOpen, onClose }: FranchiseFormModalProps) {
                     onChange={handleChange}
                     placeholder="Tell us about yourself and why you're interested in a Foodzippy franchise..."
                     rows={4}
-                    className={`w-full pl-11 pr-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-0 transition-all duration-200 resize-none font-montserrat ${
+                    className={`w-full pl-11 pr-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-0 transition-all duration-200 resize-none font-century gothic ${
                       errors.description
                         ? 'border-red-400 focus:border-red-500'
                         : 'border-gray-200 focus:border-[#E82335]'
@@ -302,7 +302,7 @@ function FranchiseFormModal({ isOpen, onClose }: FranchiseFormModalProps) {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-gradient-to-r from-[#E82335] to-[#F7C150] text-white py-4 rounded-xl font-semibold font-montserrat hover:shadow-lg hover:shadow-orange-200 transform hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none"
+                className="w-full bg-gradient-to-r from-[#E82335] to-[#F7C150] text-white py-4 rounded-xl font-semibold font-century gothic hover:shadow-lg hover:shadow-orange-200 transform hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none"
               >
                 {isSubmitting ? (
                   <>

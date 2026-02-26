@@ -15,6 +15,8 @@ import ServiceRegistration from './pages/ServiceRegistration';
 import FranchiseInquiry from './pages/FranchiseInquiry';
 import InvestorInquiry from './pages/InvestorInquiry';
 import StudentCashback from './pages/StudentCashback';
+import Careers from './pages/Careers';
+import DeliveryPartnerRegister from './pages/DeliveryPartnerRegister';
 // Agent Pages
 import AgentDashboard from './pages/agent/AgentDashboard';
 import AgentAttendance from './pages/agent/AgentAttendance';
@@ -47,7 +49,6 @@ function HomePage() {
       <CitiesWeServe />
       <TestimonialsSection />
       <PartnershipSection />
-      <Footer />
     </div>
   );
 }
@@ -66,6 +67,8 @@ function App() {
           <Route path="/franchise-inquiry" element={<FranchiseInquiry />} />
           <Route path="/investor-inquiry" element={<InvestorInquiry />} />
           <Route path="/student-cashback" element={<StudentCashback />} />
+          <Route path="/careers" element={<Careers />} />
+          <Route path="/delivery-partner-register" element={<DeliveryPartnerRegister />} />
         </Route>
         
         {/* Agent Routes */}
@@ -92,6 +95,7 @@ function App() {
         {/* Vendor Routes */}
         <Route path="/vendor/vendor-form" element={<DynamicVendorForm />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }

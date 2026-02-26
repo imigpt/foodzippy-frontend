@@ -133,11 +133,11 @@ function FranchiseInquiry() {
       {/* Page Title Section */}
       <div className="max-w-4xl mx-auto px-4 pt-8 pb-4">
         <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-800 font-montserrat">
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-800 font-century gothic">
             Franchise Inquiry
           </h1>
-          <p className="text-gray-600 mt-2 font-montserrat">
-            Join the Foodzippy family! Fill out the form below and we'll get back to you soon.
+          <p className="text-gray-600 mt-2">
+            Join the <span className="brand-font">Foodzippy</span> family! Fill out the form below and we'll get back to you soon.
           </p>
         </div>
       </div>
@@ -167,7 +167,7 @@ function FranchiseInquiry() {
                     />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold text-gray-800 font-montserrat">
+                <h3 className="text-2xl font-bold text-gray-800 font-century gothic">
                   Thank You!
                 </h3>
                 <p className="text-gray-600 mt-2">
@@ -181,7 +181,7 @@ function FranchiseInquiry() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Name Field */}
                 <div className="group">
-                  <label className="block text-sm font-medium text-[#E82335] mb-2 font-montserrat">
+                  <label className="block text-sm font-medium text-[#E82335] mb-2 font-century gothic">
                     Full Name <span className="text-red-500">*</span>
                   </label>
                   <div className="relative">
@@ -195,7 +195,7 @@ function FranchiseInquiry() {
                       value={formData.name}
                       onChange={handleChange}
                       placeholder="Enter your full name"
-                      className={`w-full pl-11 pr-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-0 transition-all duration-200 font-montserrat ${
+                      className={`w-full pl-11 pr-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-0 transition-all duration-200 font-century gothic ${
                         errors.name
                           ? 'border-red-400 focus:border-red-500'
                           : 'border-gray-200 focus:border-[#E82335]'
@@ -211,7 +211,7 @@ function FranchiseInquiry() {
 
                 {/* Email Field */}
                 <div className="group">
-                  <label className="block text-sm font-medium text-[#E82335] mb-2 font-montserrat">
+                  <label className="block text-sm font-medium text-[#E82335] mb-2 font-century gothic">
                     Email Address <span className="text-red-500">*</span>
                   </label>
                   <div className="relative">
@@ -225,7 +225,7 @@ function FranchiseInquiry() {
                       value={formData.email}
                       onChange={handleChange}
                       placeholder="your@email.com"
-                      className={`w-full pl-11 pr-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-0 transition-all duration-200 font-montserrat ${
+                      className={`w-full pl-11 pr-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-0 transition-all duration-200 font-century gothic ${
                         errors.email
                           ? 'border-red-400 focus:border-red-500'
                           : 'border-gray-200 focus:border-[#E82335]'
@@ -241,7 +241,7 @@ function FranchiseInquiry() {
 
                 {/* Phone Field */}
                 <div className="group">
-                  <label className="block text-sm font-medium text-[#E82335] mb-2 font-montserrat">
+                  <label className="block text-sm font-medium text-[#E82335] mb-2 font-century gothic">
                     Phone Number <span className="text-red-500">*</span>
                   </label>
                   <div className="relative">
@@ -255,7 +255,7 @@ function FranchiseInquiry() {
                       value={formData.phone}
                       onChange={handleChange}
                       placeholder="Enter your phone number"
-                      className={`w-full pl-11 pr-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-0 transition-all duration-200 font-montserrat ${
+                      className={`w-full pl-11 pr-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-0 transition-all duration-200 font-century gothic ${
                         errors.phone
                           ? 'border-red-400 focus:border-red-500'
                           : 'border-gray-200 focus:border-[#E82335]'
@@ -271,7 +271,7 @@ function FranchiseInquiry() {
 
                 {/* Description Field */}
                 <div className="group">
-                  <label className="block text-sm font-medium text-[#E82335] mb-2 font-montserrat">
+                  <label className="block text-sm font-medium text-[#E82335] mb-2 font-century gothic">
                     Description <span className="text-red-500">*</span>
                   </label>
                   <div className="relative">
@@ -283,9 +283,9 @@ function FranchiseInquiry() {
                       name="description"
                       value={formData.description}
                       onChange={handleChange}
-                      placeholder="Tell us about yourself and why you're interested in a Foodzippy franchise..."
+                      placeholder={"Tell us about yourself and why you're interested in a " + 'Foodzippy' + " franchise..."}
                       rows={5}
-                      className={`w-full pl-11 pr-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-0 transition-all duration-200 resize-none font-montserrat ${
+                      className={`w-full pl-11 pr-4 py-3 border-2 rounded-xl focus:outline-none focus:ring-0 transition-all duration-200 resize-none font-century gothic ${
                         errors.description
                           ? 'border-red-400 focus:border-red-500'
                           : 'border-gray-200 focus:border-[#E82335]'
@@ -303,7 +303,7 @@ function FranchiseInquiry() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-gradient-to-r from-[#E82335] to-[#F7C150] text-white py-4 rounded-xl font-semibold font-montserrat hover:shadow-lg hover:shadow-orange-200 transform hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none"
+                  className="w-full bg-gradient-to-r from-[#E82335] to-[#F7C150] text-white py-4 rounded-xl font-semibold font-century gothic hover:shadow-lg hover:shadow-orange-200 transform hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none"
                 >
                   {isSubmitting ? (
                     <>
@@ -343,10 +343,10 @@ function FranchiseInquiry() {
 
         {/* Info Box */}
         <div className="mt-8 bg-white/95 backdrop-blur-md rounded-2xl shadow-lg p-6 border border-gray-100">
-          <h3 className="text-lg font-bold text-gray-800 font-montserrat mb-3">
-            Why Partner with Foodzippy?
+          <h3 className="text-lg font-bold text-gray-800 font-century gothic mb-3">
+            Why Partner with <span className="brand-font">Foodzippy</span>?
           </h3>
-          <ul className="space-y-2 text-gray-600 font-montserrat">
+          <ul className="space-y-2 text-gray-600 font-century gothic">
             <li className="flex items-start gap-2">
               <span className="text-[#E82335] font-bold">✓</span>
               <span>Proven business model with strong ROI</span>

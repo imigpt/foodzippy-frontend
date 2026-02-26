@@ -9,7 +9,7 @@ export default {
       fontFamily: {
         'century-gothic': ['Century Gothic', 'Apple Gothic', 'sans-serif'],
         'playwrite': ['Playwrite US Trad Guides', 'serif'],
-        'montserrat': ["Montserrat", "sans-serif"],
+        'century gothic': ["century gothic", "sans-serif"],
         'belgiano': ['BelgianoSerif', 'serif'],
       }
     }
