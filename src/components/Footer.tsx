@@ -248,6 +248,17 @@ const Footer = () => {
             <div className="text-center md:text-left">Email us • info@foodzippy.co</div>
             <div>© 2025 <span className="brand-font">Foodzippy</span>. All Rights Reserved.</div>
           </div>
+
+          {/* Tagline */}
+          <div className="mt-6 text-center">
+            <p className="inline-block px-6 py-3 rounded-full bg-white/5 text-white text-lg md:text-2xl font-semibold tracking-wide">
+              <span className="text-white-400">Good Food</span>
+              {/* <span className="mx-4 text-yellow-400">♥</span> */}
+              {/* <span className="text-yellow-400">Good Heart</span> */}
+              <span className="mx-4 text-yellow-400">♥</span>
+              <span className="text-white-400">Good Mood</span>
+            </p>
+          </div>
         </div>
 
       </div>
