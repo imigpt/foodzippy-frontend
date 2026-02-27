@@ -4,6 +4,7 @@ import {
   TrendingUp, Clock, Users, Rocket, Award, BookOpen,
   MapPin, Briefcase, ChevronDown, Send, Bike, Store,
 } from 'lucide-react';
+import { API_BASE_URL } from '../utils/api';
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 
@@ -69,7 +70,7 @@ function Careers() {
     setSubmitting(true);
     try {
       const res = await fetch(
-        `${import.meta.env.VITE_API_URL || 'https://foodzippy-backend-h2ju.onrender.com'}/api/careers/apply`,
+        `${API_BASE_URL}/api/careers/apply`,
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },

@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { ChevronLeft, LogIn, LogOut, Clock, MapPin, Calendar, Loader2 } from 'lucide-react';
 import SuccessToast from '../../components/SuccessToast';
 import ErrorToast from '../../components/ErrorToast';
+import { API_BASE_URL } from '../../utils/api';
 
 interface LocationData {
   latitude: number;
@@ -55,8 +56,7 @@ function AgentAttendance() {
 
   const fetchTodayAttendance = async (token: string) => {
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'https://foodzippy-backend-h2ju.onrender.com';
-      const response = await fetch(`${apiUrl}/api/attendance/${role}/today`, {
+      const response = await fetch(`${API_BASE_URL}/api/attendance/${role}/today`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -75,9 +75,8 @@ function AgentAttendance() {
 
   const fetchAttendanceHistory = async (token: string) => {
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'https://foodzippy-backend-h2ju.onrender.com';
       const response = await fetch(
-        `${apiUrl}/api/attendance/${role}/my?month=${selectedMonth}&year=${selectedYear}`,
+        `${API_BASE_URL}/api/attendance/${role}/my?month=${selectedMonth}&year=${selectedYear}`,
         {
           headers: {
             'Authorization': `Bearer ${token}`,
@@ -178,9 +177,7 @@ function AgentAttendance() {
       // Get current location
       const location = await getCurrentLocation();
       
-      const apiUrl = import.meta.env.VITE_API_URL || 'https://foodzippy-backend-h2ju.onrender.com';
-
-      const response = await fetch(`${apiUrl}/api/attendance/${role}/check-in`, {
+      const response = await fetch(`${API_BASE_URL}/api/attendance/${role}/check-in`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -217,9 +214,7 @@ function AgentAttendance() {
       // Get current location
       const location = await getCurrentLocation();
       
-      const apiUrl = import.meta.env.VITE_API_URL || 'https://foodzippy-backend-h2ju.onrender.com';
-
-      const response = await fetch(`${apiUrl}/api/attendance/${role}/check-out`, {
+      const response = await fetch(`${API_BASE_URL}/api/attendance/${role}/check-out`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

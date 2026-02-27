@@ -9,6 +9,7 @@ import {
   CalendarClock,
   IndianRupee
 } from 'lucide-react';
+import { API_BASE_URL } from '../../utils/api';
 
 interface DashboardCard {
   id: string;
@@ -47,8 +48,7 @@ function AgentDashboard() {
 
   const fetchAgentProfile = async (token: string) => {
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'https://foodzippy-backend-h2ju.onrender.com';
-      const response = await fetch(`${apiUrl}/api/users/agent/profile`, {
+      const response = await fetch(`${API_BASE_URL}/api/users/agent/profile`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -65,10 +65,9 @@ function AgentDashboard() {
 
   const fetchDashboardStats = async (token: string) => {
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'https://foodzippy-backend-h2ju.onrender.com';
       
       // Fetch vendors count
-      const vendorsResponse = await fetch(`${apiUrl}/api/users/agent/vendors`, {
+      const vendorsResponse = await fetch(`${API_BASE_URL}/api/users/agent/vendors`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -96,7 +95,7 @@ function AgentDashboard() {
 
       // Fetch earnings stats
       try {
-        const earningsResponse = await fetch(`${apiUrl}/api/payments/agent/earnings`, {
+        const earningsResponse = await fetch(`${API_BASE_URL}/api/payments/agent/earnings`, {
           headers: {
             'Authorization': `Bearer ${token}`,
           },
@@ -115,7 +114,7 @@ function AgentDashboard() {
 
       // Fetch follow-up count (only pending follow-ups)
       try {
-        const followUpsResponse = await fetch(`${apiUrl}/api/payments/agent/followups`, {
+        const followUpsResponse = await fetch(`${API_BASE_URL}/api/payments/agent/followups`, {
           headers: {
             'Authorization': `Bearer ${token}`,
           },

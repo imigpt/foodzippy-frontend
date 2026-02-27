@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { Facebook, Instagram, LinkedinIcon, Mail } from 'lucide-react';
 import { useState } from 'react';
+import { API_BASE_URL } from '../utils/api';
 
 const Footer = () => {
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ const Footer = () => {
     setSubLoading(true);
     try {
       const res = await fetch(
-        `${import.meta.env.VITE_API_URL || 'https://foodzippy-backend-h2ju.onrender.com'}/api/subscribers/subscribe`,
+        `${API_BASE_URL}/api/subscribers/subscribe`,
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },

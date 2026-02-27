@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { ChevronLeft, Edit, Clock, CheckCircle, AlertCircle } from 'lucide-react';
 import SuccessToast from '../../components/SuccessToast';
 import ErrorToast from '../../components/ErrorToast';
+import { API_BASE_URL } from '../../utils/api';
 
 interface Vendor {
   _id: string;
@@ -45,8 +46,7 @@ function AgentRequests() {
 
   const fetchVendors = async (token: string) => {
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'https://foodzippy-backend-h2ju.onrender.com';
-      const response = await fetch(`${apiUrl}/api/users/${role}/vendors`, {
+      const response = await fetch(`${API_BASE_URL}/api/users/${role}/vendors`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -71,9 +71,8 @@ function AgentRequests() {
 
     setActionLoading(vendorId);
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'https://foodzippy-backend-h2ju.onrender.com';
       const response = await fetch(
-        `${apiUrl}/api/users/${role}/vendors/${vendorId}/request-edit`,
+        `${API_BASE_URL}/api/users/${role}/vendors/${vendorId}/request-edit`,
         {
           method: 'POST',
           headers: {

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Send, User, Mail, Phone, MapPin, Building2, IndianRupee } from 'lucide-react';
+import { API_BASE_URL } from '../utils/api';
 
 interface FormData {
   name: string;
@@ -77,7 +78,7 @@ function InvestorInquiry() {
 
     try {
       // Submit to backend API
-      const response = await fetch(`${import.meta.env.VITE_API_URL || 'https://foodzippy-backend-h2ju.onrender.com'}/api/investor-inquiry`, {
+      const response = await fetch(`${API_BASE_URL}/api/investor-inquiry`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

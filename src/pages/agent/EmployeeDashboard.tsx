@@ -12,6 +12,7 @@ import {
   CalendarClock,
   IndianRupee
 } from 'lucide-react';
+import { API_BASE_URL } from '../../utils/api';
 
 interface DashboardCard {
   id: string;
@@ -62,8 +63,7 @@ function EmployeeDashboard({ role = 'employee' }: EmployeeDashboardProps) {
 
   const fetchUserProfile = async (token: string) => {
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'https://foodzippy-backend-h2ju.onrender.com';
-      const response = await fetch(`${apiUrl}/api/users/${apiRole}/profile`, {
+      const response = await fetch(`${API_BASE_URL}/api/users/${apiRole}/profile`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -80,8 +80,7 @@ function EmployeeDashboard({ role = 'employee' }: EmployeeDashboardProps) {
 
   const fetchTodayAttendance = async (token: string) => {
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'https://foodzippy-backend-h2ju.onrender.com';
-      const response = await fetch(`${apiUrl}/api/attendance/${apiRole}/today`, {
+      const response = await fetch(`${API_BASE_URL}/api/attendance/${apiRole}/today`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -100,17 +99,16 @@ function EmployeeDashboard({ role = 'employee' }: EmployeeDashboardProps) {
 
   const fetchDashboardStats = async (token: string) => {
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'https://foodzippy-backend-h2ju.onrender.com';
       
       // Fetch attendance statistics (current month)
-      const attendanceResponse = await fetch(`${apiUrl}/api/attendance/${apiRole}/my`, {
+      const attendanceResponse = await fetch(`${API_BASE_URL}/api/attendance/${apiRole}/my`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
       });
 
       // Fetch vendors count
-      const vendorsResponse = await fetch(`${apiUrl}/api/users/${apiRole}/vendors`, {
+      const vendorsResponse = await fetch(`${API_BASE_URL}/api/users/${apiRole}/vendors`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -145,7 +143,7 @@ function EmployeeDashboard({ role = 'employee' }: EmployeeDashboardProps) {
 
       // Fetch earnings stats
       try {
-        const earningsResponse = await fetch(`${apiUrl}/api/payments/agent/earnings`, {
+        const earningsResponse = await fetch(`${API_BASE_URL}/api/payments/agent/earnings`, {
           headers: {
             'Authorization': `Bearer ${token}`,
           },
@@ -164,7 +162,7 @@ function EmployeeDashboard({ role = 'employee' }: EmployeeDashboardProps) {
 
       // Fetch follow-up count (only pending follow-ups)
       try {
-        const followUpsResponse = await fetch(`${apiUrl}/api/payments/agent/followups`, {
+        const followUpsResponse = await fetch(`${API_BASE_URL}/api/payments/agent/followups`, {
           headers: {
             'Authorization': `Bearer ${token}`,
           },

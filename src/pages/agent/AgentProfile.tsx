@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { ChevronLeft, Camera, Mail, Calendar, Phone, User as UserIcon, Briefcase } from 'lucide-react';
 import SuccessToast from '../../components/SuccessToast';
 import ErrorToast from '../../components/ErrorToast';
+import { API_BASE_URL } from '../../utils/api';
 
 interface AgentProfile {
   _id: string;
@@ -55,8 +56,7 @@ function AgentProfile() {
 
   const fetchProfile = async (token: string) => {
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'https://foodzippy-backend-h2ju.onrender.com';
-      const response = await fetch(`${apiUrl}/api/users/${role}/profile`, {
+      const response = await fetch(`${API_BASE_URL}/api/users/${role}/profile`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -96,7 +96,6 @@ function AgentProfile() {
 
     setSaving(true);
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'https://foodzippy-backend-h2ju.onrender.com';
       
       const formData = new FormData();
       formData.append('email', email);
@@ -107,7 +106,7 @@ function AgentProfile() {
         formData.append('profileImage', profileImage);
       }
 
-      const response = await fetch(`${apiUrl}/api/users/${role}/profile`, {
+      const response = await fetch(`${API_BASE_URL}/api/users/${role}/profile`, {
         method: 'PUT',
         headers: {
           'Authorization': `Bearer ${token}`,

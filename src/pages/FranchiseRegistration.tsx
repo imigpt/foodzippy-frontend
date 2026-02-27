@@ -7,6 +7,7 @@ import ValidationErrorModal from '../components/ValidationErrorModal';
 import SuccessToast from '../components/SuccessToast';
 import ErrorToast from '../components/ErrorToast';
 import { validateSection1, validateSection2, validateSection3, validateSection4, validateSection5, validateSection6, validateSection7, validateSection8 } from '../utils/sectionValidation';
+import { API_BASE_URL } from '../utils/api';
 
 export interface FormData {
   section1: {
@@ -239,9 +240,7 @@ function FranchiseRegistration() {
 
   const handleAgentLogin = async (username: string, password: string) => {
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'https://foodzippy-backend-h2ju.onrender.com';
-      
-      const response = await fetch(`${apiUrl}/api/agents/login`, {
+      const response = await fetch(`${API_BASE_URL}/api/agents/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -488,12 +487,11 @@ function FranchiseRegistration() {
       payload.append('agentName', formData.section7.agentName);
 
       // Submit to backend
-      const apiUrl = import.meta.env.VITE_API_URL || 'https://foodzippy-backend-h2ju.onrender.com';
       
       console.log('=== SUBMITTING TO BACKEND ===');
-      console.log(`Endpoint: ${apiUrl}/api/vendors/register`);
+      console.log(`Endpoint: ${API_BASE_URL}/api/vendors/register`);
       
-      const response = await fetch(`${apiUrl}/api/vendors/register`, {
+      const response = await fetch(`${API_BASE_URL}/api/vendors/register`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${agentToken}`,

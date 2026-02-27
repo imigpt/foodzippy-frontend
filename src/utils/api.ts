@@ -1,5 +1,7 @@
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://foodzippy-backend-h2ju.onrender.com';
 
+export { API_BASE_URL };
+
 export interface FormField {
   _id: string;
   section: string;
@@ -78,7 +80,8 @@ class ApiClient {
   private async request<T>(
     endpoint: string,
     options: RequestInit = {},
-    role?: 'agent' | 'employee'
+    role?: 'agent' | 'employee',
+    _retries = 2
   ): Promise<T> {
     const token = this.getAuthToken(role);
     
@@ -95,10 +98,20 @@ class ApiClient {
       headers['Authorization'] = `Bearer ${token}`;
     }
 
-    const response = await fetch(`${API_BASE_URL}${endpoint}`, {
-      ...options,
-      headers,
-    });
+    let response: Response;
+    try {
+      response = await fetch(`${API_BASE_URL}${endpoint}`, {
+        ...options,
+        headers,
+      });
+    } catch (networkError) {
+      // Retry on network errors (Render cold start, transient failures)
+      if (_retries > 0) {
+        await new Promise((r) => setTimeout(r, 1500));
+        return this.request<T>(endpoint, options, role, _retries - 1);
+      }
+      throw new Error('Server is waking up — please try again in a few seconds.');
+    }
 
     const data = await response.json();
 

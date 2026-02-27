@@ -1,6 +1,7 @@
 import { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Bike, Send, CheckCircle, ArrowLeft } from 'lucide-react';
+import { API_BASE_URL } from '../utils/api';
 
 function DeliveryPartnerRegister() {
   const navigate = useNavigate();
@@ -33,7 +34,7 @@ function DeliveryPartnerRegister() {
     setSubmitting(true);
     try {
       const res = await fetch(
-        `${import.meta.env.VITE_API_URL || 'https://foodzippy-backend-h2ju.onrender.com'}/api/delivery-partners/apply`,
+        `${API_BASE_URL}/api/delivery-partners/apply`,
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },

@@ -1,6 +1,7 @@
 import { useState, useReducer } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ChevronLeft } from 'lucide-react';
+import { API_BASE_URL } from '../utils/api';
 import ServiceRegistrationForm from '../components/service/ServiceRegistrationForm';
 import ValidationErrorModal from '../components/ValidationErrorModal';
 import SuccessToast from '../components/SuccessToast';
@@ -162,9 +163,8 @@ function ServiceRegistration() {
     try {
       setAgentLoginError(undefined);
 
-      const apiUrl = import.meta.env.VITE_API_URL || 'https://foodzippy-backend-h2ju.onrender.com';
       const endpoint = role === 'agent' ? '/api/users/agent/login' : '/api/users/employee/login';
-      const response = await fetch(`${apiUrl}${endpoint}`, {
+      const response = await fetch(`${API_BASE_URL}${endpoint}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -258,7 +258,6 @@ function ServiceRegistration() {
 
     setIsSubmitting(true);
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'https://foodzippy-backend-h2ju.onrender.com';
       const token = localStorage.getItem('agentToken');
 
       // Create FormData for multipart/form-data
@@ -316,7 +315,7 @@ function ServiceRegistration() {
         }
       });
 
-      const response = await fetch(`${apiUrl}/api/vendor/register`, {
+      const response = await fetch(`${API_BASE_URL}/api/vendor/register`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,

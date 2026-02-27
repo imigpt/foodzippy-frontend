@@ -5,6 +5,7 @@ import Section8 from '../../components/franchise/sections/Section8';
 import VendorReviewSection, { ReviewData } from '../../components/VendorReviewSection';
 import SuccessToast from '../../components/SuccessToast';
 import ErrorToast from '../../components/ErrorToast';
+import { API_BASE_URL } from '../../utils/api';
 
 interface Section8Data {
   restaurantName: string;
@@ -188,7 +189,6 @@ function AgentVendorForm() {
 
     setIsSubmitting(true);
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'https://foodzippy-backend-h2ju.onrender.com';
 
       // Create FormData for multipart/form-data
       const submitData = new FormData();
@@ -213,7 +213,7 @@ function AgentVendorForm() {
       // Add review data as JSON string
       submitData.append('review', JSON.stringify(reviewData));
 
-      const response = await fetch(`${apiUrl}/api/vendors/register`, {
+      const response = await fetch(`${API_BASE_URL}/api/vendors/register`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
