@@ -188,7 +188,7 @@ function AgentVendorForm() {
 
     setIsSubmitting(true);
     try {
-      const apiUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000';
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
       // Create FormData for multipart/form-data
       const submitData = new FormData();

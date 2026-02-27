@@ -5,9 +5,10 @@
 
 @font-face {
   font-family: "BelgianoSerif";
-  src: url("/fonts/BelgianoSerif-Regular.ttf") format("truetype");
+  src: url("/fonts/BelgianoSerif-Regular.woff") format("woff");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 

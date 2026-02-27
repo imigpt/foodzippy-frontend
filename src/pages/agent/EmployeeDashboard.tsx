@@ -62,7 +62,7 @@ function EmployeeDashboard({ role = 'employee' }: EmployeeDashboardProps) {
 
   const fetchUserProfile = async (token: string) => {
     try {
-      const apiUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000';
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
       const response = await fetch(`${apiUrl}/api/users/${apiRole}/profile`, {
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -80,7 +80,7 @@ function EmployeeDashboard({ role = 'employee' }: EmployeeDashboardProps) {
 
   const fetchTodayAttendance = async (token: string) => {
     try {
-      const apiUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000';
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
       const response = await fetch(`${apiUrl}/api/attendance/${apiRole}/today`, {
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -100,7 +100,7 @@ function EmployeeDashboard({ role = 'employee' }: EmployeeDashboardProps) {
 
   const fetchDashboardStats = async (token: string) => {
     try {
-      const apiUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000';
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
       
       // Fetch attendance statistics (current month)
       const attendanceResponse = await fetch(`${apiUrl}/api/attendance/${apiRole}/my`, {
