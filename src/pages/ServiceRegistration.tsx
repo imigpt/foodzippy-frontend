@@ -162,7 +162,7 @@ function ServiceRegistration() {
     try {
       setAgentLoginError(undefined);
 
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const apiUrl = import.meta.env.VITE_API_URL || 'https://foodzippy-backend-h2ju.onrender.com';
       const endpoint = role === 'agent' ? '/api/users/agent/login' : '/api/users/employee/login';
       const response = await fetch(`${apiUrl}${endpoint}`, {
         method: 'POST',
@@ -258,7 +258,7 @@ function ServiceRegistration() {
 
     setIsSubmitting(true);
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const apiUrl = import.meta.env.VITE_API_URL || 'https://foodzippy-backend-h2ju.onrender.com';
       const token = localStorage.getItem('agentToken');
 
       // Create FormData for multipart/form-data

@@ -47,7 +47,7 @@ function AgentDashboard() {
 
   const fetchAgentProfile = async (token: string) => {
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const apiUrl = import.meta.env.VITE_API_URL || 'https://foodzippy-backend-h2ju.onrender.com';
       const response = await fetch(`${apiUrl}/api/users/agent/profile`, {
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -65,7 +65,7 @@ function AgentDashboard() {
 
   const fetchDashboardStats = async (token: string) => {
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const apiUrl = import.meta.env.VITE_API_URL || 'https://foodzippy-backend-h2ju.onrender.com';
       
       // Fetch vendors count
       const vendorsResponse = await fetch(`${apiUrl}/api/users/agent/vendors`, {

@@ -188,7 +188,7 @@ function AgentVendorForm() {
 
     setIsSubmitting(true);
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const apiUrl = import.meta.env.VITE_API_URL || 'https://foodzippy-backend-h2ju.onrender.com';
 
       // Create FormData for multipart/form-data
       const submitData = new FormData();

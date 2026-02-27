@@ -1,4 +1,4 @@
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://foodzippy-backend-h2ju.onrender.com';
 
 export interface FormField {
   _id: string;

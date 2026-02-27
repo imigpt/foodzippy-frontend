@@ -67,7 +67,7 @@ function FranchiseInquiry() {
 
     try {
       // Submit to backend API
-      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/franchise-inquiry`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'https://foodzippy-backend-h2ju.onrender.com'}/api/franchise-inquiry`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

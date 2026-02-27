@@ -45,7 +45,7 @@ function AgentRequests() {
 
   const fetchVendors = async (token: string) => {
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const apiUrl = import.meta.env.VITE_API_URL || 'https://foodzippy-backend-h2ju.onrender.com';
       const response = await fetch(`${apiUrl}/api/users/${role}/vendors`, {
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -71,7 +71,7 @@ function AgentRequests() {
 
     setActionLoading(vendorId);
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const apiUrl = import.meta.env.VITE_API_URL || 'https://foodzippy-backend-h2ju.onrender.com';
       const response = await fetch(
         `${apiUrl}/api/users/${role}/vendors/${vendorId}/request-edit`,
         {

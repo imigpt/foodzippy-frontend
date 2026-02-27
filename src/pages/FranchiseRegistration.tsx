@@ -239,7 +239,7 @@ function FranchiseRegistration() {
 
   const handleAgentLogin = async (username: string, password: string) => {
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const apiUrl = import.meta.env.VITE_API_URL || 'https://foodzippy-backend-h2ju.onrender.com';
       
       const response = await fetch(`${apiUrl}/api/agents/login`, {
         method: 'POST',
@@ -488,7 +488,7 @@ function FranchiseRegistration() {
       payload.append('agentName', formData.section7.agentName);
 
       // Submit to backend
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const apiUrl = import.meta.env.VITE_API_URL || 'https://foodzippy-backend-h2ju.onrender.com';
       
       console.log('=== SUBMITTING TO BACKEND ===');
       console.log(`Endpoint: ${apiUrl}/api/vendors/register`);

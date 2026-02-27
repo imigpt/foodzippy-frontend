@@ -55,7 +55,7 @@ function AgentAttendance() {
 
   const fetchTodayAttendance = async (token: string) => {
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const apiUrl = import.meta.env.VITE_API_URL || 'https://foodzippy-backend-h2ju.onrender.com';
       const response = await fetch(`${apiUrl}/api/attendance/${role}/today`, {
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -75,7 +75,7 @@ function AgentAttendance() {
 
   const fetchAttendanceHistory = async (token: string) => {
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const apiUrl = import.meta.env.VITE_API_URL || 'https://foodzippy-backend-h2ju.onrender.com';
       const response = await fetch(
         `${apiUrl}/api/attendance/${role}/my?month=${selectedMonth}&year=${selectedYear}`,
         {
@@ -178,7 +178,7 @@ function AgentAttendance() {
       // Get current location
       const location = await getCurrentLocation();
       
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const apiUrl = import.meta.env.VITE_API_URL || 'https://foodzippy-backend-h2ju.onrender.com';
 
       const response = await fetch(`${apiUrl}/api/attendance/${role}/check-in`, {
         method: 'POST',
@@ -217,7 +217,7 @@ function AgentAttendance() {
       // Get current location
       const location = await getCurrentLocation();
       
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const apiUrl = import.meta.env.VITE_API_URL || 'https://foodzippy-backend-h2ju.onrender.com';
 
       const response = await fetch(`${apiUrl}/api/attendance/${role}/check-out`, {
         method: 'POST',
