@@ -49,7 +49,7 @@ function Navbar() {
           </div>
 
           {/* DESKTOP MENU */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-2 xl:space-x-8">
 
             <button
               onClick={() => navigate('/')}
@@ -115,7 +115,7 @@ function Navbar() {
           </div>
 
           {/* MOBILE MENU BUTTON */}
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className={textColor}
@@ -128,7 +128,7 @@ function Navbar() {
 
       {/* MOBILE MENU */}
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-gradient-to-r from-yellow-200 to-orange-500 border-t border-yellow-500">
+        <div className="lg:hidden bg-gradient-to-r from-yellow-200 to-orange-500 border-t border-yellow-500">
           <div className="px-4 pt-2 pb-3 space-y-1">
 
             <button

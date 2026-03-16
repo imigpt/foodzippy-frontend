@@ -98,25 +98,25 @@ function Hero() {
 
       {/* TEXT CONTENT */}
       <div className="relative z-20 max-w-7xl mx-auto px-6 text-center mt-28">
-        <h1 className="font-century-gothic text-[#F7C150] text-5xl sm:text-6xl md:text-7xl font-bold">
-            Delivering L
+        <h1 className="font-century-gothic text-[#F7C150] text-5xl sm:text-6xl lg:text-7xl font-bold">
+          Delivering L
   <span className="text-red-500">❤</span>
   ve to Students
         </h1>
 
-        <p className="font-century-gothic text-3xl sm:text-4xl md:text-5xl mt-6 font-semibold">
+        <p className="font-century-gothic text-3xl sm:text-4xl lg:text-5xl md:text-4xl mt-6 font-semibold">
           Fresh food, lowest commissions
         </p>
 
-        {/* <p className="font-century-gothic text-3xl sm:text-4xl md:text-5xl mt-10 font-semibold">
+        {/* <p className="font-century-gothic text-3xl sm:text-4xl lg:text-5xl mt-10 font-semibold">
           Coming soon to your campus!
         </p> */}
         <br></br>
         
-        <p className="font-century gothic text-[#F7C150] text-5xl sm:text-6xl md:text-8xl mt-6 font-semibold">
+        <p className="font-century gothic text-[#F7C150] text-5xl sm:text-6xl md:text-7xl lg:text-8xl mt-6 font-semibold">
         Launching soon 
         </p>
-        <p className="font-century-gothic text-3xl sm:text-4xl md:text-5xl mt-8 font-semibold">
+        <p className="font-century-gothic text-3xl sm:text-4xl md:text-4xl lg:text-5xl mt-8 font-semibold">
          in Agra, Noida & more cites
         </p>
        {/* APP STORE BUTTONS */}

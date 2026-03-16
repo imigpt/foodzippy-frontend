@@ -377,7 +377,7 @@ function AgentAttendance() {
         </div>
 
         {/* Monthly Statistics */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
           <div className="bg-white rounded-xl shadow p-6 border border-slate-200">
             <p className="text-slate-600 text-sm">Total Days</p>
             <p className="text-3xl font-bold text-slate-900 mt-2">{statistics.totalDays || 0}</p>

@@ -265,7 +265,7 @@ function AgentDashboard() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
         <div className="bg-white rounded-2xl shadow-lg p-8 border border-slate-200">
           <h2 className="text-xl font-bold text-slate-900 mb-6">Quick Stats</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             <div className="text-center p-4 bg-green-50 rounded-lg">
               <p className="text-3xl font-bold text-green-600">{stats.vendorsRegistered}</p>
               <p className="text-slate-600 text-sm mt-2">Vendors Registered</p>
