@@ -1,4 +1,8 @@
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://foodzippy-backend-h2ju.onrender.com';
+let _apiBaseUrl = import.meta.env.VITE_API_URL || 'https://foodzippy-backend-h2ju.onrender.com';
+if (import.meta.env.PROD && _apiBaseUrl.includes('localhost')) {
+  _apiBaseUrl = 'https://foodzippy-backend-h2ju.onrender.com';
+}
+const API_BASE_URL = _apiBaseUrl;
 
 export { API_BASE_URL };
 
