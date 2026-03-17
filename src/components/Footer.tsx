@@ -68,7 +68,7 @@ const Footer = () => {
   return (
     <footer className="bg-black text-white pt-16 pb-8 relative z-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-10 pt-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mid:grid-cols-3 gap-8 mid:gap-6 mb-10 pt-6">
 
           {/* Logo + About */}
           <div className="flex flex-col justify-start">
@@ -76,7 +76,7 @@ const Footer = () => {
               <img
                 src="/foodzippy-logo.png"
                 alt="Foodzippy logo"
-                className="h-28 sm:h-36 md:h-48 w-auto object-contain"
+                className="h-20 sm:h-28 md:h-40 mid:h-36 w-auto object-contain"
                 loading="lazy"
                 onError={(e) => {
                   const el = e.currentTarget as HTMLImageElement;
@@ -251,8 +251,8 @@ const Footer = () => {
           </div>
 
           {/* Tagline */}
-          <div className="mt-6 text-center">
-            <p className="inline-block px-6 py-3 rounded-full bg-white/5 text-white text-lg md:text-2xl font-semibold tracking-wide">
+            <div className="mt-6 text-center">
+            <p className="inline-block px-6 py-3 rounded-full bg-white/5 text-white text-lg md:text-2xl mid:text-xl font-semibold tracking-wide">
               <span className="text-white-400">Good Food</span>
               {/* <span className="mx-4 text-yellow-400">♥</span> */}
               {/* <span className="text-yellow-400">Good Heart</span> */}

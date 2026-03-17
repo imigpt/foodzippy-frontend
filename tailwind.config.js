@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {
+      screens: {
+        'mid': '1180px',
+      },
       fontFamily: {
         'century-gothic': ['Century Gothic', 'Apple Gothic', 'sans-serif'],
         'playwrite': ['Playwrite US Trad Guides', 'serif'],
