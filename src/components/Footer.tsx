@@ -68,7 +68,7 @@ const Footer = () => {
   return (
     <footer className="bg-black text-white pt-16 pb-8 relative z-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mid:grid-cols-3 gap-8 mid:gap-6 mb-10 pt-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-10 pt-6">
 
           {/* Logo + About */}
           <div className="flex flex-col justify-start">
@@ -150,7 +150,7 @@ const Footer = () => {
                   Careers
                 </button>
               </li>
-              <li><a href="#" className="text-gray-400 hover:text-yellow-500 transition-colors">Contact</a></li>
+              {/* <li><a href="#" className="text-gray-400 hover:text-yellow-500 transition-colors">Contact</a></li> */}
             </ul>
           </div>
 
@@ -176,77 +176,69 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Newsletter */}
-          <div>
-            <p className="text-gray-400 mb-4 text-sm">Subscribe to get updates and offers</p>
-            <div className="flex gap-2">
-              <input
-  type="email"
-  aria-label="Subscribe email"
-  placeholder="Your email"
-  value={subEmail}
-  onChange={(e) => { setSubEmail(e.target.value); setSubMsg(''); }}
-  onKeyDown={(e) => e.key === 'Enter' && handleSubscribe()}
-  className="
-    flex-1 px-4 py-3 
-    bg-white 
-    text-black 
-    placeholder-gray-500 
-    rounded-full 
-    border border-gray-200
-    shadow-sm
-    focus:outline-none 
-    focus:ring-2 
-    focus:ring-yellow-400
-  "
-  />
+          {/* Newsletter column: sits to the right of Services on large screens */}
+          <div className="flex flex-col items-start lg:items-end justify-self-end">
+            <div className="w-full lg:max-w-sm">
+              <p className="text-gray-400 mb-4 text-sm">Subscribe to get updates and offers</p>
+              <div className="flex items-center gap-3">
+                <input
+                  type="email"
+                  aria-label="Subscribe email"
+                  placeholder="Your email"
+                  value={subEmail}
+                  onChange={(e) => { setSubEmail(e.target.value); setSubMsg(''); }}
+                  onKeyDown={(e) => e.key === 'Enter' && handleSubscribe()}
+                  className="w-full px-4 py-3 bg-white text-black placeholder-gray-500 rounded-full border border-gray-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                />
 
-              <button
-                onClick={handleSubscribe}
-                disabled={subLoading}
-                aria-label="Subscribe"
-                className="bg-yellow-500 p-3 rounded-full hover:bg-yellow-600 transition-colors disabled:opacity-50 shadow-md flex items-center justify-center"
-              >
-                <Mail size={20} />
-              </button>
-            </div>
-            {subMsg && (
-              <p className={`text-sm mt-2 ${subError ? 'text-red-400' : 'text-green-400'}`}>{subMsg}</p>
-            )}
-            {/* Social icons under subscribe */}
-            <div className="mt-4 flex items-center gap-3">
-              <a
-                href="#"
-                className="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center hover:bg-yellow-600 transition-colors duration-200"
-                aria-label="Facebook"
-              >
-                <Facebook size={18} className="text-black" />
-              </a>
+                <button
+                  onClick={handleSubscribe}
+                  disabled={subLoading}
+                  aria-label="Subscribe"
+                  className="bg-yellow-500 p-3 rounded-full hover:bg-yellow-600 transition-colors disabled:opacity-50 shadow-md flex items-center justify-center"
+                >
+                  <Mail size={20} />
+                </button>
+              </div>
+              {subMsg && (
+                <p className={`text-sm mt-2 ${subError ? 'text-red-400' : 'text-green-400'}`}>{subMsg}</p>
+              )}
+              <div className="mt-4 flex items-center justify-right gap-3">
+                <a
+                  href="#"
+                  className="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center hover:bg-yellow-600 transition-colors duration-200"
+                  aria-label="Facebook"
+                >
+                  <Facebook size={18} className="text-black" />
+                </a>
 
-              <a
-                href="#"
-                className="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center hover:bg-yellow-600 transition-colors duration-200"
-                aria-label="Instagram"
-              >
-                <Instagram size={18} className="text-black" />
-              </a>
+                <a
+                  href="#"
+                  className="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center hover:bg-yellow-600 transition-colors duration-200"
+                  aria-label="Instagram"
+                >
+                  <Instagram size={18} className="text-black" />
+                </a>
 
-              <a
-                href="#"
-                className="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center hover:bg-yellow-600 transition-colors duration-200"
-                aria-label="LinkedIn"
-              >
-                <LinkedinIcon size={18} className="text-black" />
-              </a>
+                <a
+                  href="#"
+                  className="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center hover:bg-yellow-600 transition-colors duration-200"
+                  aria-label="LinkedIn"
+                >
+                  <LinkedinIcon size={18} className="text-black" />
+                </a>
+              </div>
             </div>
           </div>
+
+          {/* Newsletter removed from separate column (moved into Services) */}
 
         </div>
 
         {/* Footer Bottom */}
         <div className="border-t border-gray-800 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
-            <div className="text-center md:text-left">Email us • info@foodzippy.co</div>
+            <div className="text-center md:text-left">Email us • info@foodzippy.co<br></br> Contact us • +91 9639999905</div>
             <div>© 2025 <span className="brand-font">Foodzippy</span>. All Rights Reserved.</div>
           </div>
 
