@@ -1,5 +1,4 @@
 import { Gift, Percent, Smartphone, BookOpen, GraduationCap, Star } from 'lucide-react';
-import Footer from '../components/Footer';
 
 const benefits = [
   {
@@ -241,7 +240,6 @@ function StudentCashback() {
         </div>
       </section>
 
-      <Footer />
     </div>
   );
 }

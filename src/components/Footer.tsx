@@ -150,7 +150,16 @@ const Footer = () => {
                   Careers
                 </button>
               </li>
-              {/* <li><a href="#" className="text-gray-400 hover:text-yellow-500 transition-colors">Contact</a></li> */}
+              <li><button
+                  onClick={() => navigate('/investor-inquiry')}
+                  className="text-gray-400 hover:text-yellow-500 transition-colors text-left">
+                  Investors
+                </button></li>
+                <li><button
+                  onClick={() => navigate('/franchise-inquiry')}
+                  className="text-gray-400 hover:text-yellow-500 transition-colors text-left">
+                  Franchise
+                </button></li>
             </ul>
           </div>
 
