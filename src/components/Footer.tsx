@@ -253,11 +253,9 @@ const Footer = () => {
 
           {/* Tagline */}
             <div className="mt-6 text-center">
-            <p className="inline-block px-6 py-3 rounded-full bg-white/5 text-white text-lg md:text-2xl mid:text-xl font-semibold tracking-wide">
+            <p className="inline-block px-8 py-4 rounded-full bg-white/5 text-white text-2xl md:text-4xl mid:text-3xl font-semibold tracking-wide">
               <span className="text-white-400">Good Food</span>
-              {/* <span className="mx-4 text-yellow-400">♥</span> */}
-              {/* <span className="text-yellow-400">Good Heart</span> */}
-              <span className="mx-4 text-yellow-400">♥</span>
+              <span className="mx-4 text-[#E82435] text-3xl md:text-5xl mid:text-4xl">♥</span>
               <span className="text-white-400">Good Mood</span>
             </p>
           </div>
