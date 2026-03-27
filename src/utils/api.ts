@@ -16,6 +16,7 @@ export interface FormField {
   options?: string[];
   placeholder: string;
   required: boolean;
+  conditionalRequired?: string[] | null;
   order: number;
   visibleTo: string[];
   isActive: boolean;

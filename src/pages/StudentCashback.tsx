@@ -1,25 +1,41 @@
-import { Gift, Percent, Smartphone, BookOpen, GraduationCap, Star } from 'lucide-react';
+import { Gift, Percent, Smartphone, BookOpen, GraduationCap, Star, Moon, Home } from 'lucide-react';
 
 const benefits = [
   {
-    icon: <Percent className="w-8 h-8 text-white" />,
-    title: 'Flat 20% Cashback',
-    description: 'Get up to 20% cashback on every order you place through our app.',
-  },
-  {
     icon: <Gift className="w-8 h-8 text-white" />,
     title: 'Welcome Bonus',
-    description: 'Earn ₹100 welcome cashback when you sign up with a valid student ID.',
+    description: 'Valid student ID (T&C)',
+    highlight: false,
+  },
+  {
+    icon: <Percent className="w-8 h-8 text-white" />,
+    title: '20% Flat on Every Order',
+    description: 'Valid student ID (T&C)',
+    highlight: false,
   },
   {
     icon: <Star className="w-8 h-8 text-white" />,
-    title: 'Exclusive Deals',
-    description: 'Unlock student-only coupons and limited-time flash offers every week.',
+    title: 'Exclusive Deal',
+    description: ' Unlock student-only coupons, limited-time flash offers',
+    highlight: false,
   },
   {
     icon: <BookOpen className="w-8 h-8 text-white" />,
-    title: 'Exam-Season Specials',
-    description: 'Extra discounts during exam weeks to fuel your study sessions.',
+    title: 'Exam Season Special',
+    description: 'Extra savings during exam weeks to support your study sessions.',
+    highlight: false,
+  },
+  {
+    icon: <Moon className="w-8 h-8 text-white" />,
+    title: 'Late Night Study',
+    description: 'Special late-night cashback offers for students who order after study hours.',
+    highlight: false,
+  },
+  {
+    icon: <Home className="w-8 h-8 text-white" />,
+    title: 'PG / Hostel Special',
+    description: 'Subscription basic plan',
+    highlight: false,
   },
 ];
 
@@ -117,7 +133,7 @@ function StudentCashback() {
                   <div className="w-full h-full bg-white rounded-[2.5rem] flex flex-col items-center justify-center p-6">
                     <Smartphone className="w-16 h-16 text-[#E82335] mb-4" />
                     <h3 className="text-2xl font-bold text-gray-900 mb-2 text-center"><span className="brand-font">Foodzippy</span></h3>
-                    <p className="text-gray-500 text-center text-sm mb-6">Student Cashback Program</p>
+                    <p className="text-gray-500 text-center text-sm mb-6">Get ₹100 direct cashback in wallet</p>
                     <div className="bg-gradient-to-r from-[#E82335] to-[#F7C150] text-white text-3xl font-extrabold px-6 py-3 rounded-2xl shadow-lg">
                       20% OFF
                     </div>
@@ -143,25 +159,36 @@ function StudentCashback() {
       <section className="py-16 sm:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
-            <h2 className="text-4xl sm:text-5xl font-bold text-[#E82335] mb-3">Why Students Love Us</h2>
+            <h2 className="text-4xl sm:text-5xl font-bold text-[#E82335] mb-3">Why Students Love Us ❤️</h2>
             <p className="text-lg text-gray-500 max-w-2xl mx-auto">
               Exclusive perks designed for the student lifestyle
             </p>
+            <p className="mt-4 inline-flex items-center justify-center rounded-full bg-[#E82335]/10 px-5 py-2 text-sm sm:text-base font-semibold text-[#E82335]">
+              Get ₹100 direct cashback in wallet
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch">
             {benefits.map((benefit, index) => (
               <div
                 key={index}
-                className="group bg-gradient-to-br from-white to-red-50 rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 p-6 border border-gray-100 text-center"
+                className={`group rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 p-6 border text-center h-full flex flex-col ${benefit.highlight
+                  ? 'bg-gradient-to-br from-[#E82335] to-[#C51A2A] border-[#E82335]/20'
+                  : 'bg-gradient-to-br from-white to-red-50 border-gray-100'
+                  }`}
               >
-                <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-[#E82335] to-[#F7C150] rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                <div className={`w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 ${benefit.highlight
+                  ? 'bg-white/20'
+                  : 'bg-gradient-to-br from-[#E82335] to-[#F7C150]'
+                  }`}>
                   {benefit.icon}
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-[#E82335] transition-colors">
+                <h3 className={`text-lg font-bold mb-2 transition-colors ${benefit.highlight ? 'text-white' : 'text-gray-900 group-hover:text-[#E82335]'}`}>
                   {benefit.title}
                 </h3>
-                <p className="text-sm text-gray-500 leading-relaxed">{benefit.description}</p>
+                <p className={`text-sm leading-relaxed mt-auto ${benefit.highlight ? 'text-white/90' : 'text-gray-500'}`}>
+                  {benefit.description}
+                </p>
               </div>
             ))}
           </div>
@@ -199,7 +226,7 @@ function StudentCashback() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 sm:py-20 bg-gradient-to-r from-[#E82335] to-[#F7C150]">
+      <section className="py-16 sm:py-20 bg-gradient-to-r from-[#7C3AED] to-[#A78BFA]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
             Ready to Start Saving?

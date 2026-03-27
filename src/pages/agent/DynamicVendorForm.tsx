@@ -100,11 +100,18 @@ export default function DynamicVendorForm() {
 
     sectionsToValidate.forEach((section) => {
       section.fields
-        .filter((f) => f.isActive && f.required)
+        .filter((f) => f.isActive)
         .forEach((field) => {
           const value = stepNumber === 1 ? formData[field.fieldKey] : reviewData[field.fieldKey];
           
-          if (!value || (Array.isArray(value) && value.length === 0)) {
+          // Determine if field is required based on field.required or conditionalRequired
+          let isFieldRequired = field.required;
+          if (field.conditionalRequired && Array.isArray(field.conditionalRequired)) {
+            // If conditionalRequired is set, field is required only for specified vendor types
+            isFieldRequired = field.conditionalRequired.includes(vendorType);
+          }
+          
+          if (isFieldRequired && (!value || (Array.isArray(value) && value.length === 0))) {
             newErrors[field.fieldKey] = `${field.label} is required`;
           }
 
@@ -348,6 +355,7 @@ export default function DynamicVendorForm() {
                               value={formData[field.fieldKey]}
                               onChange={handleFieldChange}
                               error={errors[field.fieldKey]}
+                              vendorType={vendorType}
                             />
                           </div>
                         ))}
@@ -394,6 +402,7 @@ export default function DynamicVendorForm() {
                             value={reviewData[field.fieldKey]}
                             onChange={handleReviewChange}
                             error={errors[field.fieldKey]}
+                            vendorType={vendorType}
                           />
                         </div>
                       ))}

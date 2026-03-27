@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 
 function Navbar() {
   const navigate = useNavigate();
+  const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -22,6 +23,20 @@ function Navbar() {
   const textColor = isScrolled ? "text-white" : "text-black";
   const iconColor = isScrolled ? "white" : "black";
   const logoSrc = isScrolled ? "/foodzip1.png" : "/foodzip2.png";
+
+  const isActive = (path: string) => location.pathname === path;
+  const navButtonClass = (active: boolean) =>
+    `${textColor} font-century gothic px-5 py-2 rounded-full transition-all duration-300 font-medium ${
+      active
+        ? isScrolled
+          ? 'bg-white/20 ring-1 ring-white/30'
+          : 'bg-black/10 ring-1 ring-black/20'
+        : 'hover:bg-white/20'
+    }`;
+  const mobileButtonClass = (active: boolean) =>
+    `block w-full text-left px-3 py-2 rounded-md font-medium transition-colors ${
+      active ? 'bg-yellow-600 text-white' : 'text-white hover:bg-yellow-500'
+    }`;
 
   return (
     <nav
@@ -53,21 +68,21 @@ function Navbar() {
 
             <button
               onClick={() => navigate('/')}
-              className={`${textColor} hover:${textColor} font-century gothic hover:bg-white/20 px-5 py-2 rounded-full transition-all duration-300 font-medium`}
+              className={navButtonClass(isActive('/'))}
             >
               Home
             </button>
 
             <button
               onClick={() => navigate('/our-story')}
-              className={`${textColor} hover:${textColor} font-century gothic font-medium hover:bg-white/20 px-5 py-2 rounded-full transition-all duration-300`}
+              className={navButtonClass(isActive('/our-story'))}
             >
               Our Story
             </button>
 
             <button
               onClick={() => navigate('/service-registration')}
-              className={`${textColor} hover:${textColor} font-century gothic hover:bg-white/20 px-5 py-2 rounded-full transition-all duration-300 font-medium`}
+              className={navButtonClass(isActive('/service-registration'))}
             >
               Vendor Registration
             </button>
@@ -88,27 +103,27 @@ function Navbar() {
                 }
                 setIsMobileMenuOpen(false);
               }}
-              className={`${textColor} hover:${textColor} font-century gothic hover:bg-white/20 px-5 py-2 rounded-full transition-all duration-300 font-medium`}
+              className={navButtonClass(isActive('/') && location.hash === '#restaurants')}
             >
               Restaurants
             </button>
             <button
               onClick={() => navigate('/franchise-inquiry')}
-              className={`${textColor} hover:${textColor} font-century gothic hover:bg-white/20 px-5 py-2 rounded-full transition-all duration-300 font-medium`}
+              className={navButtonClass(isActive('/franchise-inquiry'))}
             >
               Franchises
             </button>
 
             <button
               onClick={() => navigate('/investor-inquiry')}
-              className={`${textColor} hover:${textColor} font-century gothic hover:bg-white/20 px-5 py-2 rounded-full transition-all duration-300 font-medium`}
+              className={navButtonClass(isActive('/investor-inquiry'))}
             >
               Investors
             </button>
 
             <button
               onClick={() => navigate('/student-cashback')}
-              className={`${textColor} hover:${textColor} font-century gothic hover:bg-white/20 px-5 py-2 rounded-full transition-all duration-200 font-medium`}
+              className={navButtonClass(isActive('/student-cashback'))}
             >
               Student Cashback
             </button>
@@ -136,7 +151,7 @@ function Navbar() {
                 navigate('/');
                 setIsMobileMenuOpen(false);
               }}
-              className="block w-full text-left px-3 py-2 text-white hover:bg-yellow-500 rounded-md font-medium"
+              className={mobileButtonClass(isActive('/'))}
             >
               Home
             </button>
@@ -146,7 +161,7 @@ function Navbar() {
                 navigate('/our-story');
                 setIsMobileMenuOpen(false);
               }}
-              className="block w-full text-left px-3 py-2 text-white hover:bg-yellow-500 rounded-md font-medium"
+              className={mobileButtonClass(isActive('/our-story'))}
             >
               Our Story
             </button>
@@ -156,7 +171,7 @@ function Navbar() {
                 navigate('/service-registration');
                 setIsMobileMenuOpen(false);
               }}
-              className="block w-full text-left px-3 py-2 text-white hover:bg-yellow-500 rounded-md font-medium"
+              className={mobileButtonClass(isActive('/service-registration'))}
             >
               Vendor Register
             </button>
@@ -177,7 +192,7 @@ function Navbar() {
                 }
                 setIsMobileMenuOpen(false);
               }}
-              className="block w-full text-left px-3 py-2 text-white hover:bg-yellow-500 rounded-md font-medium"
+              className={mobileButtonClass(isActive('/') && location.hash === '#restaurants')}
             >
               Restaurants
             </button>
@@ -187,7 +202,7 @@ function Navbar() {
                 navigate('/franchise-inquiry');
                 setIsMobileMenuOpen(false);
               }}
-              className="block w-full text-left px-3 py-2 text-white hover:bg-yellow-500 rounded-md font-medium"
+              className={mobileButtonClass(isActive('/franchise-inquiry'))}
             >
               Franchises
             </button>
@@ -196,7 +211,7 @@ function Navbar() {
                 navigate('/investor-inquiry');
                 setIsMobileMenuOpen(false);
               }}
-              className="block w-full text-left px-3 py-2 text-white hover:bg-yellow-500 rounded-md font-medium"
+              className={mobileButtonClass(isActive('/investor-inquiry'))}
             >
               Investor
             </button>
@@ -211,7 +226,7 @@ function Navbar() {
                 navigate('/careers');
                 setIsMobileMenuOpen(false);
               }}
-              className="block w-full text-left px-3 py-2 text-white hover:bg-yellow-500 rounded-md font-medium"
+              className={mobileButtonClass(isActive('/careers'))}
             >
               Careers
             </button>

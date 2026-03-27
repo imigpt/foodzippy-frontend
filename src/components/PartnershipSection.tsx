@@ -74,7 +74,7 @@ function PartnershipSection() {
                     }}
                     className="bg-yellow-500 text-white px-6 py-3 rounded-full hover:bg-yellow-600 transition-all duration-200 transform hover:scale-105 font-semibold"
                   >
-                    Learn More
+                    Get Started
                   </button>
                 </div>
               </div>

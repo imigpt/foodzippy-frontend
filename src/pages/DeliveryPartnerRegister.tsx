@@ -64,15 +64,22 @@ function DeliveryPartnerRegister() {
         <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/5 rounded-full -translate-y-1/2 translate-x-1/2" />
         <div className="absolute bottom-0 left-0 w-72 h-72 bg-[#F7C150]/10 rounded-full translate-y-1/2 -translate-x-1/2" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          <div className="inline-flex items-center gap-2 bg-blue-500/10 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold mb-6">
-            <Bike className="w-4 h-4" />
-            Delivery Partner
+          <div className="inline-flex items-center gap-2 bg-green-50 text-green-600 px-4 py-2 rounded-full text-sm font-semibold mb-6">
+            <span className="relative w-6 h-6 flex items-center justify-center">
+              <Bike className="w-4 h-4 text-green-600" />
+              <span className="absolute left-1/2 bottom-0 transform -translate-x-1/2 translate-y-2 flex flex-col items-center">
+                <span className="block w-3 h-[2px] bg-green-600 rounded-sm mb-0.5" />
+                <span className="block w-3 h-[2px] bg-green-600 rounded-sm" />
+              </span>
+            </span>
+            <span className="text-green-600">Delivery Partner</span>
           </div>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
-            Join as a <span className="text-blue-600">Delivery Partner</span>
+            Join as a <span className="text-green-600">Delivery Partner</span>
           </h1>
           <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
-            Earn flexible income by delivering happiness to students. Register now and start your journey with <span className="brand-font">Foodzippy</span>.
+            Earn flexible income by delivering happiness. <br>
+            </br>Register now and start your journey with <span className="font-century gothic">Foodzippy</span>.
           </p>
         </div>
       </section>
@@ -175,7 +182,7 @@ function DeliveryPartnerRegister() {
               <button
                 type="submit"
                 disabled={submitting}
-                className="w-full inline-flex items-center justify-center gap-2 bg-yellow-500 text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-yellow-600 transition-all duration-200 transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
+                className="w-full inline-flex items-center justify-center gap-2 bg-yellow-500 text-green-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-yellow-600 transition-all duration-200 transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
               >
                 <Send className="w-5 h-5" />
                 {submitting ? 'Submitting...' : 'Submit Application'}

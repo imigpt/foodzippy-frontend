@@ -5,12 +5,19 @@ interface DynamicFormFieldProps {
   value: any;
   onChange: (fieldKey: string, value: any) => void;
   error?: string;
+  vendorType?: string;
 }
 
-export default function DynamicFormField({ field, value, onChange, error }: DynamicFormFieldProps) {
+export default function DynamicFormField({ field, value, onChange, error, vendorType }: DynamicFormFieldProps) {
   const handleChange = (newValue: any) => {
     onChange(field.fieldKey, newValue);
   };
+
+  // Determine if field is required based on field.required or conditionalRequired
+  let isFieldRequired = field.required;
+  if (field.conditionalRequired && Array.isArray(field.conditionalRequired) && vendorType) {
+    isFieldRequired = field.conditionalRequired.includes(vendorType);
+  }
 
   const renderField = () => {
     switch (field.fieldType) {
@@ -180,7 +187,7 @@ export default function DynamicFormField({ field, value, onChange, error }: Dyna
     <div className="space-y-2">
       <label htmlFor={field.fieldKey} className="block text-sm font-medium text-gray-700">
         {field.label}
-        {field.required && <span className="text-red-500 ml-1">*</span>}
+        {isFieldRequired && <span className="text-red-500 ml-1">*</span>}
       </label>
       {renderField()}
       {field.helpText && !['checkbox', 'boolean'].includes(field.fieldType) && (

@@ -26,9 +26,13 @@ const jobs = [
   { title: 'Delivery Partner', city: 'Agra / Noida', type: 'Freelance / Part-time', desc: 'Deliver food orders quickly and reliably, earning attractive per-delivery pay.', category: 'Delivery Operations' },
   
   // Office & Corporate
-  // { title: 'Customer Support Executive', city: 'Remote / Agra', type: 'Full-time', desc: 'Be the first point of contact for customers and vendors, resolving queries swiftly.', category: 'Office & Corporate Roles' },
-  // { title: 'Operations Manager', city: 'Agra', type: 'Full-time', desc: 'Oversee daily operations across vendor onboarding, delivery, and support teams.', category: 'Office & Corporate Roles' },
-  // { title: 'Marketing Executive', city: 'Remote / Agra', type: 'Full-time', desc: 'Drive brand awareness, social media growth, and campaign execution.', category: 'Office & Corporate Roles' },
+  { title: 'Customer Support Executive', city: 'Remote / Agra', type: 'Full-time', desc: 'Be the first point of contact for customers and vendors, resolving queries swiftly.', category: 'Office & Corporate Roles' },
+  { title: 'Operations Manager', city: 'Agra', type: 'Full-time', desc: 'Oversee daily operations across vendor onboarding, delivery, and support teams.', category: 'Office & Corporate Roles' },
+  { title: 'Marketing Executive', city: 'Remote / Agra', type: 'Full-time', desc: 'Drive brand awareness, social media growth, and campaign execution.', category: 'Office & Corporate Roles' },
+  { title: 'Graphic Designer', city: 'Remote / Agra', type: 'Full-time', desc: 'Create engaging visual content for marketing and brand purposes.', category: 'Office & Corporate Roles' },
+  { title: 'Frontend Developer', city: 'Remote / Agra', type: 'Full-time', desc: 'Build and enhance the user-facing features of our platform.', category: 'Office & Corporate Roles' },
+  { title: 'Backend Developer', city: 'Remote / Agra', type: 'Full-time', desc: 'Develop and maintain the server-side logic and database management.', category: 'Office & Corporate Roles' },
+  { title: 'Full Stack Developer', city: 'Remote / Agra', type: 'Full-time', desc: 'Work across the stack to build and improve our platform’s features.', category: 'Office & Corporate Roles' },
 ];
 
 const positions = jobs.map((j) => j.title);
@@ -44,6 +48,7 @@ function Careers() {
     email: '',
     phone: '',
     position: '',
+    jobType: '',
     city: '',
     message: '',
     resume: null as File | null,
@@ -63,7 +68,7 @@ function Careers() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!form.fullName || !form.email || !form.phone || !form.position || !form.city) {
+    if (!form.fullName || !form.email || !form.phone || !form.position || !form.jobType || !form.city) {
       setFormError('Please fill in all required fields.');
       return;
     }
@@ -79,6 +84,7 @@ function Careers() {
             email: form.email,
             phone: form.phone,
             position: form.position,
+            jobType: form.jobType,
             city: form.city,
             message: form.message,
           }),
@@ -230,7 +236,7 @@ function Careers() {
                 Thank you for applying. Our team will review your application and reach out to you soon.
               </p>
               <button
-                onClick={() => { setSubmitted(false); setForm({ fullName: '', email: '', phone: '', position: '', city: '', message: '', resume: null }); }}
+                onClick={() => { setSubmitted(false); setForm({ fullName: '', email: '', phone: '', position: '', jobType: '', city: '', message: '', resume: null }); }}
                 className="inline-flex items-center gap-2 bg-gradient-to-r from-[#E82335] to-[#F7C150] text-white px-8 py-3 rounded-full font-semibold shadow hover:shadow-md transition-all"
               >
                 Apply for Another Role
@@ -314,6 +320,25 @@ function Careers() {
                     {positions.map((p) => (
                       <option key={p} value={p}>{p}</option>
                     ))}
+                  </select>
+                  <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none" />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  Job Type <span className="text-[#E82335]">*</span>
+                </label>
+                <div className="relative">
+                  <select
+                    name="jobType"
+                    value={form.jobType}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-[#E82335] transition-colors text-gray-800 appearance-none bg-white"
+                  >
+                    <option value="">Select job type</option>
+                    <option value="full-time">Full Time</option>
+                    <option value="part-time">Part Time</option>
                   </select>
                   <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none" />
                 </div>

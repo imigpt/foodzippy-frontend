@@ -10,6 +10,7 @@ import Footer from './components/Footer';
 import OurStoryPage from './pages/OurStory';
 import ScrollToTop from './components/ScrollToTop';
 import WhatWeOffer from './components/WhatWeOffer';
+import WhatsAppButton from './components/WhatsAppButton';
 import FranchiseRegistration from './pages/FranchiseRegistration';
 import ServiceRegistration from './pages/ServiceRegistration';
 import FranchiseInquiry from './pages/FranchiseInquiry';
@@ -96,6 +97,7 @@ function App() {
         <Route path="/vendor/vendor-form" element={<DynamicVendorForm />} />
       </Routes>
       <Footer />
+      <WhatsAppButton />
     </Router>
   );
 }
