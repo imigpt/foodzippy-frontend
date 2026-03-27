@@ -188,7 +188,7 @@ const Footer = () => {
           {/* Newsletter column: sits to the right of Services on large screens */}
           <div className="flex flex-col items-start lg:items-end justify-self-end">
             <div className="w-full lg:max-w-sm">
-              <p className="text-gray-400 mb-4 text-sm">Subscribe to get updates and offers</p>
+              <p className="text-gray-400 mb-4 text-sm">Subscribe to get updates & offers</p>
               <div className="flex items-center gap-3">
                 <input
                   type="email"
