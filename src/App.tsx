@@ -19,6 +19,7 @@ import StudentCashback from './pages/StudentCashback';
 import Careers from './pages/Careers';
 import DeliveryPartnerRegister from './pages/DeliveryPartnerRegister';
 import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsAndConditions from './pages/TermsAndConditions';
 // Agent Pages
 import AgentDashboard from './pages/agent/AgentDashboard';
 import AgentAttendance from './pages/agent/AgentAttendance';
@@ -72,6 +73,7 @@ function App() {
           <Route path="/careers" element={<Careers />} />
           <Route path="/delivery-partner-register" element={<DeliveryPartnerRegister />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
         </Route>
         
         {/* Agent Routes */}

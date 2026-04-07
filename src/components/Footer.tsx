@@ -249,16 +249,21 @@ const Footer = () => {
           
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
             <div className="text-center md:text-left">Email us • info@foodzippy.co<br></br> Contact us • +91 9639999905</div>
-            {/* Privacy Policy Button */}
-          <div className="mb-6 text-center">
-            <button
+            <div>
+              <button
               onClick={() => navigate('/privacy-policy')}
               className="text-gray-400 hover:text-yellow-500 transition-colors text-sm font-medium"
-            >
+>
               Privacy Policy
             </button>
-          </div>
-            <div>© 2025 <span className="brand-font">Foodzippy</span>. All Rights Reserved.</div>
+            <span className="text-gray-400"> | </span>
+            <button
+              onClick={() => navigate('/terms-and-conditions')}
+              className="text-gray-400 hover:text-yellow-500 transition-colors text-sm font-medium"
+>
+              Terms and Conditions
+            </button><br></br>
+            © 2025 <span className="brand-font">Foodzippy</span>. All Rights Reserved.</div>
           </div>
 
           {/* Tagline */}
